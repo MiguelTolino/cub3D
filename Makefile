@@ -32,7 +32,7 @@ NAME:= cub3D
 CC:= gcc 
 MLXFLAG =   -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lmlx
 #CFLAGS:= -Wall -Werror -Wextra
-MLX_DIR:= files/lib/minilibx-linux
+#MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf
 LIBFT_DIR:= ./files/lib/libft
 DEBUG_FLAG:= -g
@@ -54,7 +54,7 @@ libft:
 		make -C $(LIBFT_DIR)
 		
 minilibx:
-		make -C $(MLX_DIR)
+#		make -C $(MLX_DIR)
 
 debug:
 	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a $(DEBUG_FLAG)
@@ -62,7 +62,7 @@ debug:
 clean:
 		@echo "Removing objects"
 		make -C $(LIBFT_DIR) clean
-		make -C $(MLX_DIR) clean
+#		make -C $(MLX_DIR) clean
 		$(RM) $(OBJS)
 fclean:
 		make clean

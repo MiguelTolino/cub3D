@@ -1,0 +1,23 @@
+R 860 480
+
+NO ./textures/theroom.xpm
+SO ./textures/nicolas-cage.xpm
+WE ./textures/theroom.xpm
+EA ./textures/nicolas-cage.xpm
+
+S ./textures/Sprites/cthulhu2.xpm
+
+F 184, 113, 39
+C 51, 198, 227
+
+CT ./textures/Iron.xpm
+FT ./textures/Bricks.xpm
+
+111111
+11000011
+10000011
+10002001
+10000001
+10E00001
+10000001
+1111111

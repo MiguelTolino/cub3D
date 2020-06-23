@@ -1,0 +1,21 @@
+R 1920 1080
+
+NO       ./textures/paper.xpm
+SO ./textures/paper_dark.xpm
+WE ./textures/paper_blue.xpm
+EA     ./textures/paper_grey.xpm
+
+S ./textures/Sprites/barrel.xpm
+
+F 10,     100, 39
+C    152, 198, 227
+
+1111111111
+ 1001002001111
+111	100001000 1
+11010E000010110		 
+  110002001111
+ 00010000001111
+10101111101111	
+1111	100001
+	11111111111111

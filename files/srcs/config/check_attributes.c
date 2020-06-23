@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_attributes.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/04/02 00:44:15 by miguel            #+#    #+#             */
+/*   Updated: 2020/06/12 19:07:02 by mmateo-t         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "config.h"
+
+int check_arg(int argc, char **argv)
+{
+	if (argc > 3 || argc <= 1)
+	{
+		throw_error("The number of main arguments are wrong");
+	}
+	if (!(ft_strnstr(argv[1], ".cub", ft_strlen(argv[1]))))
+	{
+		throw_error("Argument does not have the extension .cub");
+	}
+	if (argc == 3)
+	{
+		if ((ft_strncmp(argv[2], "--save", ft_strlen(argv[2])) != 0))
+		{
+			throw_error("Option couldn't be recognized");
+		}
+	}
+	return (1);
+}

@@ -30,7 +30,11 @@ OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
 CC:= gcc 
+<<<<<<< HEAD
 MLXFLAG =   -L/usr/local/lib /usr/local/lib/libmlx.a -lXext -lX11 -lmlx
+=======
+MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
+>>>>>>> ae64d798cdf938263e5571c251bd2d97c7f885e1
 #CFLAGS:= -Wall -Werror -Wextra
 #MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf

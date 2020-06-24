@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 16:02:18 by mmateo-t          #+#    #+#              #
-#    Updated: 2020/06/23 22:28:36 by user42           ###   ########.fr        #
+#    Updated: 2020/06/24 16:04:19 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,9 @@ OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
 CC:= gcc 
-<<<<<<< HEAD
-MLXFLAG =   -L/usr/local/lib /usr/local/lib/libmlx.a -lXext -lX11 -lmlx
-=======
 MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
->>>>>>> ae64d798cdf938263e5571c251bd2d97c7f885e1
 #CFLAGS:= -Wall -Werror -Wextra
-#MLX_DIR:= files/lib/minilibx-linux
+MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf
 LIBFT_DIR:= ./files/lib/libft
 DEBUG_FLAG:= -g
@@ -58,7 +54,7 @@ libft:
 		make -C $(LIBFT_DIR)
 		
 minilibx:
-#		make -C $(MLX_DIR)
+		make -C $(MLX_DIR)
 
 debug:
 	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a $(DEBUG_FLAG)

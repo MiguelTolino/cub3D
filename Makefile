@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/11 16:02:18 by mmateo-t          #+#    #+#              #
-#    Updated: 2020/06/12 19:02:28 by mmateo-t         ###   ########.fr        #
+#    Updated: 2020/06/23 22:28:36 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
 CC:= gcc 
-MLXFLAG =   -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lmlx
+MLXFLAG =   -L/usr/local/lib /usr/local/lib/libmlx.a -lXext -lX11 -lmlx
 #CFLAGS:= -Wall -Werror -Wextra
 #MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf

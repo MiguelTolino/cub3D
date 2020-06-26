@@ -23,6 +23,6 @@ int main(int argc, char **argv)
   print_data(cam);
   create_window(&mlx);
   //gameloop(&mlx, cam);
-  mlx_loop(mlx.ptr);
+  //mlx_loop(mlx.ptr);
   return (0);
 }

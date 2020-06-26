@@ -60,6 +60,7 @@ typedef struct s_config
     int counter;
     int pos_x;
     int pos_y;
+    char dir;
 } t_config;
 
 t_config g_config;

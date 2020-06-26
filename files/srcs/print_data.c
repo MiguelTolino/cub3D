@@ -33,7 +33,9 @@ void print_data(t_cam cam)
 		printf("Ceiling rgb[%i]: %i\n", i , g_config.C.rgb[i]);
 		i++;
 	}
-
+	printf("PosX: %i\n", g_config.pos_x);
+	printf("PosY: %i\n", g_config.pos_y);
+	printf("Orientacion: %c\n", g_config.map.world_map[g_config.pos_x][g_config.pos_y]);
 	printf("Map:\n");
 	i = 0;
 	while (i < g_config.map.n_row)
@@ -41,6 +43,6 @@ void print_data(t_cam cam)
 		printf("%s\n", g_config.map.world_map[i]);
 		i++;
 	}
-	
-	
+	 printf("Position X: %f\n", cam.pos.x); 
+	 printf("Position Y: %f\n", cam.pos.y); 
 }

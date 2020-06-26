@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 16:02:25 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/26 11:35:40 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/06/26 11:32:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
-int main(int argc, char **argv)
+t_cam init()
 {
-  t_mlx mlx;
-  t_cam cam;
-  check_arg(argc, argv);
-  read_config(argv[1]);
-  
-  cam = init();
-  print_data(cam);
-  create_window(&mlx);
-  //gameloop(&mlx, cam);
-  mlx_loop(mlx.ptr);
-  return (0);
+	t_cam cam;
+	
+	cam.pos.x = g_config.pos_x;
+	cam.pos.y = g_config.pos_y;
+	cam.dir.x = -1;
+	cam.dir.y = 0;
+	cam.plane.x = 0;
+	cam.plane.y = 0.66;
+
+	return (cam);
 }

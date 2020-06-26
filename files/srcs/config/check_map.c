@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/15 11:27:28 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/25 14:06:46 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char **parse_map(char *buff)
 	map = ft_split(g_config.map.buff, '\n');
 	fill_map(map);
 	i = 0;
- 	while (i < g_config.map.n_row)
+	while (i < g_config.map.n_row)
 	{
 		j = 0;
 		while (j < g_config.map.n_col)
@@ -54,6 +54,8 @@ char **parse_map(char *buff)
 			if (ft_strchr("NWES", map[i][j]))
 			{
 				trigger++;
+				g_config.pos_x = i;
+				g_config.pos_y = j;
 				break;
 			}
 			j++;
@@ -70,7 +72,6 @@ char **parse_map(char *buff)
 	}
 	else
 		throw_error("Map is not closed");
-	
 }
 
 int check_map(char **map, int row, int col)

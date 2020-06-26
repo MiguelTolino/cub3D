@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/15 11:21:46 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/25 14:05:56 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_config
     char *S;
     t_map map;
     int counter;
+    int pos_x;
+    int pos_y;
 } t_config;
 
 t_config g_config;

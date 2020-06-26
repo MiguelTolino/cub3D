@@ -6,11 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/12 19:07:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/24 19:33:11 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
+
+//TODO Imágenes son reproducidas "on the fly". Si ese es el caso corregir funcion
 
 char *save_texture(char *line)
 {

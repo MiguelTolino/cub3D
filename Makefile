@@ -23,7 +23,8 @@
 SRCS_DIR:= files/srcs/
 SRCS := $(wildcard $(SRCS_DIR)*.c) \
 		$(wildcard $(GNL)*.c) \
-		$(wildcard $(SRCS_DIR)config/*.c)
+		$(wildcard $(SRCS_DIR)config/*.c) \
+		$(wildcard $(SRCS_DIR)engine/*.c)
 
 OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects

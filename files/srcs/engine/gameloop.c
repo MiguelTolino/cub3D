@@ -6,12 +6,53 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/29 13:54:37 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:22:46 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
+int read_keys(int keycode, t_engine *en)
+{
+	//move forward if no wall in front of you
+	if (keycode == KEY_UP)
+	{
+		if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
+			en->pos.x += en->dir.x * MOVE_SPEED;
+		if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.y * MOVE_SPEED)] == '0')
+			en->pos.y += en->dir.y * MOVE_SPEED;
+	}
+	//move backwards if no wall behind you
+	if (keycode == KEY_S)
+	{
+		if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
+			en->pos.x -= en->dir.x * MOVE_SPEED;
+		if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.y * MOVE_SPEED)] == '0')
+			en->pos.y -= en->dir.y * MOVE_SPEED;
+	}
+	/*	//rotate to the right
+	if (keycode == KEY_D)
+	{
+		//both camera direction and camera plane must be rotated
+		double oldDirX = dirX;
+		dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
+		dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+		double oldPlaneX = planeX;
+		planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
+		planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+	}
+	//rotate to the left
+	if (keycode == KEY_A)
+	{
+		//both camera direction and camera plane must be rotated
+		double oldDirX = dirX;
+		dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+		dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+		double oldPlaneX = planeX;
+		planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
+		planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+	} */
+}
 void verLine(t_engine en, t_mlx *mlx, int x)
 {
 	int i = en.draw_start;
@@ -22,7 +63,7 @@ int get_color(t_engine en)
 {
 	//choose wall color
 	int color;
-	if (g_config.map.world_map[en.map_x][en.map_y] == 1)
+	if (g_config.map.world_map[en.map_x][en.map_y] == '1')
 	{
 		color = 16712447;
 	}
@@ -33,7 +74,7 @@ int gameloop(t_mlx *mlx, t_engine en)
 {
 	int x;
 
-	while (1 /*!done()*/)
+	while (1 /*FUNCTION STOP*/)
 	{
 		x = 0;
 		while (x < g_config.R.x)
@@ -91,7 +132,7 @@ int gameloop(t_mlx *mlx, t_engine en)
 					en.side = 1;
 				}
 				//Check if ray has hit a wall
-				if (g_config.map.world_map[en.map_x][en.map_y] > 0)
+				if (g_config.map.world_map[en.map_x][en.map_y] > '0')
 					en.hit = 1;
 			}
 			if (en.side == 0)
@@ -111,12 +152,12 @@ int gameloop(t_mlx *mlx, t_engine en)
 				en.draw_end = g_config.R.y - 1;
 
 			en.color = get_color(en);
-
 			//give x and y sides different brightness
 			if (en.side == 1)
 				en.color = en.color / 2;
 
 			verLine(en, mlx, x);
+			mlx_key_hook(mlx->win, read_keys, &en);
 			x++;
 		}
 	}

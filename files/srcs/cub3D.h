@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/29 13:50:29 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:03:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #define PLAYER_HEIGHT 32
 #define FOV 60
 #define GRID_SIZE 64
+#define MOVE_SPEED 0.08
+#define ROT_SPEED 0.048
 
 typedef struct s_vector
 {

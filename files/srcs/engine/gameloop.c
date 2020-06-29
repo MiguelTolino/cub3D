@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/29 19:22:46 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/29 19:39:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int read_keys(int keycode, t_engine *en)
 {
 	//move forward if no wall in front of you
-	if (keycode == KEY_UP)
+	if (keycode == KEY_W)
 	{
 		if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
 			en->pos.x += en->dir.x * MOVE_SPEED;
 		if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.y * MOVE_SPEED)] == '0')
 			en->pos.y += en->dir.y * MOVE_SPEED;
+		printf("PosX: %f\n", en->pos.x);
+		printf("PosY: %f\n", en->pos.y);
 	}
 	//move backwards if no wall behind you
 	if (keycode == KEY_S)

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/26 11:36:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/29 13:50:29 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_cam
 	t_vector plane;
 } t_cam;
 
-typedef struct s_game
+typedef struct s_engine
 {
 	t_vector pos;
 	t_vector dir;
@@ -45,15 +45,19 @@ typedef struct s_game
 	t_vector side_dist;
 	t_vector delta_dist;
 	double perp_wall_dist;
-	t_vector step;
 	int hit;
 	int side;
 	int draw_start;
 	int draw_end;
 	double time;
 	double old_time;
-} t_game;
-
+	int map_x;
+	int map_y;
+	int step_x;
+	int step_y;
+	int line_height;
+	int color;
+} t_engine;
 
 typedef struct s_mlx
 {
@@ -63,8 +67,8 @@ typedef struct s_mlx
 } t_mlx;
 
 int create_window(t_mlx *mlx);
-t_cam init();
-int gameloop(t_mlx *mlx, t_game player);
-void print_data(t_cam cam);
+void init(t_engine *en);
+int gameloop(t_mlx *mlx, t_engine en);
+void print_data(t_engine en);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/26 12:10:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/29 12:24:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void print_data(t_cam cam)
+void print_data(t_engine en)
 {
 	int i;
 
@@ -43,6 +43,10 @@ void print_data(t_cam cam)
 		printf("%s\n", g_config.map.world_map[i]);
 		i++;
 	}
-	 printf("Position X: %f\n", cam.pos.x); 
-	 printf("Position Y: %f\n", cam.pos.y); 
+	 printf("Position X: %f\n", en.pos.x); 
+	 printf("Position Y: %f\n", en.pos.y);
+
+	 //Direction
+	 printf("DirX: %f\n",en.dir.x);
+	 printf("DirY: %f\n",en.dir.y);
 }

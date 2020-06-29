@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:59:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/26 00:35:31 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/06/26 18:18:45 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void verLine(int x, int drawStart, int drawEnd, int color, void *mlx_ptr, void *
 int main(int argc, char **argv)
 {
 	double posX = 22, posY = 12;	  //x and y start position
-	double dirX = -1, dirY = 0;		  //initial direction vector
+	double dirX = 1, dirY = 0.8;		  //initial direction vector
 	double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
 
 	void *ptr = mlx_init();

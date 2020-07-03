@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/03 12:25:45 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/03 14:33:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int gameloop(t_engine *en)
 	int x;
 
 	x = 0;
+	while (1)
+	{
 	while (x < g_config.R.x)
 	{
 		init_calc(en, x);
@@ -128,8 +130,10 @@ int gameloop(t_engine *en)
 		calc_pixel(en);
 		en->color = get_color(en);
 		draw(en, x);
-		mlx_key_hook(en->mlx.win, read_keys, en);
 		x++;
+		mlx_key_hook(en->mlx.win, read_keys, en);
+	}
+	mlx_loop(en->mlx.ptr);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/03 10:31:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/03 13:10:53 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ typedef struct s_mlx
 	void *ptr;
 	void *win;
 	void *img;
-	int *bpp;
-	int *size_line;
-	int *endian;
+	int bpp;
+	int size_line;
+	int endian;
+	char *data;
 } t_mlx;
 
 typedef struct s_engine

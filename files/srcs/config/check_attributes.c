@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 00:44:15 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/12 19:07:02 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/03 13:02:40 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ int check_arg(int argc, char **argv)
 		{
 			throw_error("Option couldn't be recognized");
 		}
+		else
+		{
+			//TODO Print and save bitmap
+		}
+		
 	}
 	return (1);
 }

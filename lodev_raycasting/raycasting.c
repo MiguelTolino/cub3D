@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:59:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/29 17:56:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/03 12:12:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,48 +50,6 @@ void verLine(int x, int drawStart, int drawEnd, int color, void *mlx_ptr, void *
 		mlx_pixel_put(mlx_ptr, mlx_win, x, i++, color);
 }
 
-/* int readKeys(int keycode, void *param)
-{
-	//move forward if no wall in front of you
-	if (keycode == KEY_W)
-	{
-		if (worldMap[(int)(posX + dirX * moveSpeed)][(int)posY] == 0)
-			posX += dirX * moveSpeed;
-		if (worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false)
-			posY += dirY * moveSpeed;
-	}
-	//move backwards if no wall behind you
-	if (keycode == KEY_S)
-	{
-		if (worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false)
-			posX -= dirX * moveSpeed;
-		if (worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false)
-			posY -= dirY * moveSpeed;
-	}
-	//rotate to the right
-	if (keycode == KEY_D)
-	{
-		//both camera direction and camera plane must be rotated
-		double oldDirX = dirX;
-		dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-		dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-		double oldPlaneX = planeX;
-		planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-		planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
-	}
-	//rotate to the left
-	if (keycode == KEY_A)
-	{
-		//both camera direction and camera plane must be rotated
-		double oldDirX = dirX;
-		dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-		dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-		double oldPlaneX = planeX;
-		planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-		planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
-	}
-} */
-
 int main(int argc, char **argv)
 {
 	double posX = 22, posY = 12;	  //x and y start position
@@ -102,7 +60,6 @@ int main(int argc, char **argv)
 	void *win = mlx_new_window(ptr, screenWidth, screenHeight, "Raycasting");
 	while (1 /*!done()*/)
 	{
-
 		for (int x = 0; x < screenWidth; x++)
 		{
 			//calculate ray position and direction
@@ -218,11 +175,51 @@ int main(int argc, char **argv)
 
 			//speed modifiers
 			double frameTime = 60;
-			double moveSpeed = frameTime * 5.0; //the constant value is in squares/second
-			double rotSpeed = frameTime * 3.0;	//the constant value is in radians/second
-			//mlx_key_hook(win, readKeys, param);
+			double moveSpeed = 0.08; //the constant value is in squares/second
+			double rotSpeed = 0.03;	 //the constant value is in radians/second
+									 //mlx_key_hook(win, readKeys, param);
+			//move forward if no wall in front of you
+			if (keycode == KEY_W)
+			{
+				if (worldMap[(int)(posX + dirX * moveSpeed)][(int)posY] == 0)
+					posX += dirX * moveSpeed;
+				if (worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false)
+					posY += dirY * moveSpeed;
+			}
+			//move backwards if no wall behind you
+			if (keycode == KEY_S)
+			{
+				if (worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false)
+					posX -= dirX * moveSpeed;
+				if (worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false)
+					posY -= dirY * moveSpeed;
+			}
+			//rotate to the right
+			if (keycode == KEY_D)
+			{
+				//both camera direction and camera plane must be rotated
+				double oldDirX = dirX;
+				dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
+				dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+				double oldPlaneX = planeX;
+				planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
+				planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+			}
+			//rotate to the left
+			if (keycode == KEY_A)
+			{
+				//both camera direction and camera plane must be rotated
+				double oldDirX = dirX;
+				dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
+				dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
+				double oldPlaneX = planeX;
+				planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
+				planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+			}
 		}
-		mlx_loop(ptr);
-		return (0);
 	}
+
+	mlx_loop(ptr);
+}
+return (0);
 }

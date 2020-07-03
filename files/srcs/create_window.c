@@ -6,17 +6,17 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 18:25:58 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/29 14:02:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/03 10:31:32 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int create_window(t_mlx *mlx)
+int create_window(t_engine *en)
 {
-	if(!((mlx->ptr = mlx_init())))
+	if(!((en->mlx.ptr = mlx_init())))
 		throw_error("Failed minilibx connection");
-	if(!(mlx->win = mlx_new_window(mlx->ptr, g_config.R.x, g_config.R.y, "cub3D")))
+	if(!(en->mlx.win = mlx_new_window(en->mlx.ptr, g_config.R.x, g_config.R.y, "cub3D")))
 		throw_error("There was a problem with window creation");
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/03 12:18:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:17:06 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ static int orientation(t_engine *en)
 		en->dir.x = 1;
 		en->dir.y = 0;
 		en->plane.x = 0;
-		en->plane.y = 0.66;
+		en->plane.y = -0.66;
 	}
 	if (dir == 'W')
 	{
-		en->dir.x = 0;
+		en->dir.x = 1;
 		en->dir.y = -1;
 		en->plane.x = -0.66;
-		en->plane.y = 0;
+		en->plane.y = -0.66;
 	}
 	if (dir == 'E')
 	{
-		en->dir.x = 0;
+		en->dir.x = -1;
 		en->dir.y = 1;
 		en->plane.x = 0.66;
-		en->plane.y = 0;
+		en->plane.y = 0.66;
 	}
 	return (0);
 }

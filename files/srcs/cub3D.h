@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 11:34:44 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:54:08 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int read_keys(int keycode, t_engine *en);
 int rotate_player(t_engine *en, int dir);
 void draw(t_engine *en, int x);
 int get_color(t_engine *en);
+int rgb_int(int r, int g, int b);
 
 #endif

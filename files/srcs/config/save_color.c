@@ -38,6 +38,11 @@ char *rgb2hex(int r, int g, int b)
 	return (rgb2hex);
 }
 
+int rgb_int(int r, int g, int b)
+{
+	return (65536 * r + 256 * g + b);
+}
+
 t_color save_color(char *line, char *position)
 {
 	t_color color;
@@ -55,5 +60,6 @@ t_color save_color(char *line, char *position)
 		i++;
 	}
 	color.rgb_hex = rgb2hex(color.rgb[0], color.rgb[1], color.rgb[2]);
+	color.rgb_int = rgb_int(color.rgb[0], color.rgb[1], color.rgb[2]);
 	return (color);
 }

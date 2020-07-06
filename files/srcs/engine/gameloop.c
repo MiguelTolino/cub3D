@@ -6,13 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 11:34:03 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:45:22 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-
 
 static void dda(t_engine *en)
 {
@@ -83,8 +81,12 @@ static void init_calc(t_engine *en, int x)
 	en->map_y = (int)en->pos.y;
 	en->side_dist.x = 0;
 	en->side_dist.y = 0;
-	en->delta_dist.x = fabs(1 / en->ray_dir.x);
-	en->delta_dist.y = fabs(1 / en->ray_dir.y);
+	//	en->delta_dist.x = fabs(1 / en->ray_dir.x);
+	//	en->delta_dist.y = fabs(1 / en->ray_dir.y);
+
+	// Alternative code for deltaDist in case division through zero is not supported
+	en->delta_dist.x = (en->ray_dir.y == 0) ? 0 : ((en->ray_dir.x == 0) ? 1 : fabs(1 / en->ray_dir.x));
+	en->delta_dist.y = (en->ray_dir.x == 0) ? 0 : ((en->ray_dir.y == 0) ? 1 : fabs(1 / en->ray_dir.y));
 	en->perp_wall_dist = 0;
 	en->step_x = 0;
 	en->step_y = 0;
@@ -105,8 +107,9 @@ int gameloop(t_engine *en)
 		calc_pixel(en);
 		en->color = get_color(en);
 		draw(en, x);
-		x++;
 		mlx_key_hook(en->mlx.win, read_keys, en);
+		x++;
 	}
+	//mlx_put_image_to_window(en->mlx.ptr, en->mlx.win, en->mlx.img, 0, 0);
 	return (0);
 }

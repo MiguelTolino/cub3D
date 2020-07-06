@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 11:54:08 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/06 19:28:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,25 @@
 #include <math.h>
 #include "../includes/key_linux.h"
 
-#define MOVE_SPEED 0.05
-#define ROT_SPEED 0.05
+#define MOVE_SPEED 0.4
+#define ROT_SPEED 0.1
 
 typedef struct s_vector
 {
 	double x;
 	double y;
 } t_vector;
+
+typedef struct s_key_buff
+{
+	int up;
+	int down;
+	int left;
+	int right;
+	int rot_left;
+	int rot_right;
+	
+}t_key_buff;
 
 typedef struct s_mlx
 {
@@ -35,7 +46,7 @@ typedef struct s_mlx
 	int bpp;
 	int size_line;
 	int endian;
-	char *data;
+	int *data;
 } t_mlx;
 
 typedef struct s_engine
@@ -61,6 +72,7 @@ typedef struct s_engine
 	int line_height;
 	int color;
 	t_mlx mlx;
+	t_key_buff k_buff;
 } t_engine;
 
 int create_window(t_engine *en);
@@ -72,5 +84,7 @@ int rotate_player(t_engine *en, int dir);
 void draw(t_engine *en, int x);
 int get_color(t_engine *en);
 int rgb_int(int r, int g, int b);
+int key_release(int keycode, t_engine *en);
+int movement(t_engine *en);
 
 #endif

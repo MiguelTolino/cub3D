@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 19:49:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:16:13 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,7 @@ int read_keys(int keycode, t_engine *en)
 		printf("PosY: %f\n", en->pos.y);
 	}
 	if (keycode == KEY_ESC)
-		exit(0);
-	mlx_clear_window(en->mlx.ptr, en->mlx.win);
-	gameloop(en);
+		exit_game(en);
 	return (0);
 }
 

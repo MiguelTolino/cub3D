@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 16:02:25 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 19:43:32 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:38:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(int argc, char **argv)
   print_data(en);
   create_window(&en);
   gameloop(&en);
-  //mlx_do_key_autorepeatoff(en.mlx.ptr);
-  //mlx_hook(en.mlx.win, 2, 1, read_keys, &en);
 	//mlx_key_hook(en.mlx.win, key_release, &en);
+  mlx_key_hook(en.mlx.win, read_keys, &en);
+  mlx_loop_hook(en.mlx.ptr, gameloop, &en);
   mlx_loop(en.mlx.ptr);
   return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/07 12:16:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/07 20:14:27 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <math.h>
 #include "../includes/key_linux.h"
 
-#define MOVE_SPEED 0.4
-#define ROT_SPEED 0.1
+#define MOVE_SPEED 0.08
+#define ROT_SPEED 0.05
 
 typedef struct s_vector
 {
@@ -35,6 +35,7 @@ typedef struct s_key_buff
 	int right;
 	int rot_left;
 	int rot_right;
+	int esc;
 	
 }t_key_buff;
 
@@ -86,6 +87,8 @@ int get_color(t_engine *en);
 int rgb_int(int r, int g, int b);
 int key_release(int keycode, t_engine *en);
 int movement(t_engine *en);
+ int key_press(int keycode, t_engine *en);
 int exit_game(t_engine *en);
+int move_draw(t_engine *en);
 
 #endif

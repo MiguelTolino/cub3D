@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/07 12:16:13 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:35:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int move_right(t_engine *en)
 		en->pos.x += en->dir.y * MOVE_SPEED;
 }
 
-/* int movement(t_engine *en)
+int movement(t_engine *en)
 {
 	if (en->k_buff.up)
 	{
@@ -96,8 +96,13 @@ static int move_right(t_engine *en)
 	{
 		rotate_right(en);
 	}
+	if (en->k_buff.esc)
+	{
+		exit_game(en);
+	}
+	
 	return (0);
-} */
+}
 
 int read_keys(int keycode, t_engine *en)
 {
@@ -151,44 +156,40 @@ int read_keys(int keycode, t_engine *en)
 	return (0);
 }
 
-/* int read_keysss(int keycode, t_engine *en)
+ int key_press(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 	{
 		en->k_buff.up = 1;
-		move_foward(en);
 	}
 	if (keycode == KEY_S)
 	{
 		en->k_buff.down = 1;
-		move_backward(en);
 	}
 	if (keycode == KEY_RIGHT)
 	{
 		en->k_buff.rot_right = 1;
-		rotate_right(en);
 	}
 	if (keycode == KEY_LEFT)
 	{
 		en->k_buff.rot_left = 1;
-		rotate_left(en);
 	}
 	if (keycode == KEY_A)
 	{
 		en->k_buff.left = 1;
-		move_left(en);
 	}
 	if (keycode == KEY_D)
 	{
 		en->k_buff.right = 1;
-		move_right(en);
 	}
 	if (keycode == KEY_ESC)
-		exit(0);
+	{
+		en->k_buff.esc = 1;
+	}
 	return (0);
-} */
+}
 
-/* int key_release(int keycode, t_engine *en)
+ int key_release(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 	{
@@ -215,4 +216,4 @@ int read_keys(int keycode, t_engine *en)
 		en->k_buff.right = 0;
 	}
 	return (0);
-} */
+}

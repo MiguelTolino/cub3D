@@ -40,6 +40,8 @@ char *rgb2hex(int r, int g, int b)
 
 int rgb_int(int r, int g, int b)
 {
+	if (r > 255 || b > 255 || g > 255 || b < 0 || g < 0 || r < 0)
+		throw_error("Error: RGB Color is wrong");
 	return (65536 * r + 256 * g + b);
 }
 
@@ -61,5 +63,6 @@ t_color save_color(char *line, char *position)
 	}
 	color.rgb_hex = rgb2hex(color.rgb[0], color.rgb[1], color.rgb[2]);
 	color.rgb_int = rgb_int(color.rgb[0], color.rgb[1], color.rgb[2]);
+	g_config.counter++;
 	return (color);
 }

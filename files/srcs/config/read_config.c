@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/12 19:07:33 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 11:36:35 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,44 +33,20 @@ static void save_config(char *line)
 	}
 	/*
 	 	if (position = ft_strnstr(line, "NO", ft_strlen(line)))
-		{
 			g_config.NO = save_texture(line);
-			g_config.counter++;
-		}
-	
 	 	if (position = ft_strnstr(line, "SO",ft_strlen(line)))
-		{
 			g_config.SO = save_texture(line);
-			g_config.counter++;
-		}
 		if (position = ft_strnstr(line, "EA",ft_strlen(line)))
-		{
 			g_config.EA = save_texture(line);
-			g_config.counter++;
-
-		}
 		if (position = ft_strnstr(line, "WE",ft_strlen(line)))
-		{
 			g_config.WE = save_texture(line);
-			g_config.counter++;
-
-		}
 		if (position = ft_strnstr(line, "S",ft_strlen(line)))
-		{
 			g_config.S = save_texture(line);
-			g_config.counter++;
-		} 
 		*/
 	if (position = ft_strnstr(line, "F", ft_strlen(line)))
-	{
 		g_config.F = save_color(line, position);
-		g_config.counter++;
-	}
 	if (position = ft_strnstr(line, "C", ft_strlen(line)))
-	{
 		g_config.C = save_color(line, position);
-		g_config.counter++;
-	}
 }
 
 int read_config(char *argv)

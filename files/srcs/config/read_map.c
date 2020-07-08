@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/12 19:07:37 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 13:56:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,14 @@ int is_map(char *line) //TODO Considerate another number for bonus
 
 	i = 0;
 	if (!*line)
-	{
 		return (0);
-	}
-	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0' || line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-	{
-		i++;
-	}
+	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0' 
+	|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+	 	i++;
 	if (i == ft_strlen(line))
-	{
 		return (1);
-	}
 	else
-	{
 		return (0);
-	}
 }
 
 void read_map(int fd)

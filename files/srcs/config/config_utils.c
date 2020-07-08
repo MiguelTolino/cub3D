@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 21:27:24 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/15 11:21:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 14:45:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,16 @@ char *pad_right(char padding, int len)
 	return (str);
 }
 
-char **copy_matrix(int m, char **array)
+char **copy_matrix(int n_row, char **map)
 {
 	char **matrix;
 	int i;
-	int j;
 
 	i = 0;
-	*matrix = ft_calloc(m, sizeof(char*));
-	while (i < m)
+	matrix = (char**)malloc(n_row * sizeof(char*));
+	while (i < n_row)
 	{
-		matrix[i] = ft_strdup(array[i]);
+		matrix[i] = ft_strdup(map[i]);
 		i++;
 	}
 	return (matrix);

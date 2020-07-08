@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2020/06/24 19:33:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 11:32:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char *save_texture(char *line)
 	}
 	free(filedir);
 	close(fd);
+	g_config.counter++;
 	return(texture);
 }

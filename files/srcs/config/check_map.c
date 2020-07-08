@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/06/25 14:06:46 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 14:45:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-void fill_map(char **map)
+static void fill_map(char **map)
 {
 	int i;
 	ssize_t len;

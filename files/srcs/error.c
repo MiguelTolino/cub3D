@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 20:23:15 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/07 18:14:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 11:36:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void throw_error(const char *str)
 	str2 = ft_strjoin("Error\n", str);
     perror(str2);
 	free(str2);
-    exit(0);
+    exit(EXIT_FAILURE);
 }
 
 int exit_game(t_engine *en)

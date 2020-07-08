@@ -6,12 +6,14 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 21:27:24 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 14:45:43 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 14:48:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
+
+//FIXME ERROR IN FUNCTION FREE_STR
 void free_str(char **str)
 {
 	int i;

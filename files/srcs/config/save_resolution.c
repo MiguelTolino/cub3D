@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 16:17:18 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 18:25:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:19:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ t_resolution	save_resolution(char *line)
 		throw_error("Error: resolution is wrong, check and run it again");
 	check_resolution(&r);
 	free_str(aux);
+	g_config.counter++;
 	return (r);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/08 14:45:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:04:22 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define MAX_HEIGHT 1080
 #define MIN_WIDTH 320
 #define MIN_HEIGHT 200
-#define NUM_CONFIG 3
+#define NUM_CONFIG 8
 
 typedef struct s_resolution
 {

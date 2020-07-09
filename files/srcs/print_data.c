@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:03:42 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ void print_data(t_engine en)
 		printf("Ceiling rgb[%i]: %i\n", i , g_config.C.rgb[i]);
 		i++;
 	}
+
+	//TEXTURES
+	
+	printf("NO: %s\n", g_config.NO);
+	printf("SO: %s\n", g_config.SO);
+	printf("EA: %s\n", g_config.EA);
+	printf("WE: %s\n", g_config.WE);
+	printf("S: %s\n", g_config.S);
+
 	printf("PosX: %i\n", g_config.pos_x);
 	printf("PosY: %i\n", g_config.pos_y);
 	printf("Orientacion: %c\n", g_config.map.world_map[g_config.pos_x][g_config.pos_y]);

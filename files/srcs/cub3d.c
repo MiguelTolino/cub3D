@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 16:02:25 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:37:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int		main(int argc, char **argv)
 
 	check_arg(argc, argv);
 	read_config(argv[1]);
-	init(&en);
 	print_data(en);
 	create_window(&en);
+	init(&en);
 	gameloop(&en);
 	hooks(en);
 	return (0);

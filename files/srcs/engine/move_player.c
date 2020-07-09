@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 23:59:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/10 00:42:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,28 +111,16 @@ int key_press(int keycode, t_engine *en)
 int key_release(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
-	{
 		en->k_buff.up = 0;
-	}
 	if (keycode == KEY_S)
-	{
 		en->k_buff.down = 0;
-	}
 	if (keycode == KEY_RIGHT)
-	{
 		en->k_buff.rot_right = 0;
-	}
 	if (keycode == KEY_LEFT)
-	{
 		en->k_buff.rot_left = 0;
-	}
 	if (keycode == KEY_A)
-	{
 		en->k_buff.left = 0;
-	}
 	if (keycode == KEY_D)
-	{
 		en->k_buff.right = 0;
-	}
 	return (0);
 }

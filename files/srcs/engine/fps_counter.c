@@ -6,16 +6,18 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 12:30:58 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 23:42:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/10 00:52:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void get_time(t_engine *en)
+char *get_time(t_engine *en)
 {
 	double frame_time;
+	char *buff;
 
+	buff = malloc(sizeof(char) * 6);
 	en->fps.old_time = en->fps.time;
 	en->fps.time = clock();
 	frame_time = (double)(en->fps.time - en->fps.old_time) / CLOCKS_PER_SEC;
@@ -26,13 +28,14 @@ void get_time(t_engine *en)
 		en->fps.max = en->fps.counter;
 	if (en->fps.counter < en->fps.min)
 		en->fps.min = en->fps.counter;
-
+	gcvt(en->fps.counter, 6, buff);
 	en->move_speed = frame_time * 5;
 	en->rot_speed = frame_time * 3;
-		printf("MOVE SPEED: %f\t", en->move_speed);
-		printf("ROT SPEED: %f\n", en->rot_speed);
-		printf("FPS: %.2f\t\t\t", en->fps.counter);
-		printf("Max: %.2f\t\t\t", en->fps.max);
-		printf("Mean: %.2f\t\t\t", en->fps.average / en->fps.num);
-		printf("Min: %.2f\n", en->fps.min);
+/* 	printf("MOVE SPEED: %f\t", en->move_speed);
+	printf("ROT SPEED: %f\n", en->rot_speed);
+	printf("FPS: %.2f\t\t\t", en->fps.counter);
+	printf("Max: %.2f\t\t\t", en->fps.max);
+	printf("Mean: %.2f\t\t\t", en->fps.average / en->fps.num);
+	printf("Min: %.2f\n", en->fps.min); */
+	return (buff);
 }

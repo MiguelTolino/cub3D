@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 23:03:52 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/10 00:51:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int rgb_int(int r, int g, int b);
 int key_release(int keycode, t_engine *en);
 int movement(t_engine *en);
 int key_press(int keycode, t_engine *en);
-void get_time(t_engine *en);
+char* get_time(t_engine *en);
 int exit_game(t_engine *en);
 int raycasting(t_engine *en);
 int get_texture(t_engine *en);

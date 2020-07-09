@@ -6,11 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/08 17:25:13 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3d.h"
 
 void draw(t_engine *en, int x)
 {
@@ -22,7 +22,7 @@ void draw(t_engine *en, int x)
 		*(en->mlx.data + (i * g_config.R.x) + x) = g_config.C.rgb_int;
 		i++;
 	}
-    while (i < en->draw_end)
+    while (i <= en->draw_end)
     {
         *(en->mlx.data + (i * g_config.R.x) + x) = en->color;
         i++;
@@ -34,11 +34,3 @@ void draw(t_engine *en, int x)
     }
 }
 
-int move_draw(t_engine *en)
-{
-	movement(en);
-	gameloop(en);
-	mlx_put_image_to_window(en->mlx.ptr, en->mlx.win, en->mlx.img, 0, 0);
-	//usleep(10000);
-	return (0);
-}

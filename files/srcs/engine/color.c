@@ -6,11 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:33:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/06 13:03:37 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3d.h"
 
 int get_side(t_engine *en)
 {

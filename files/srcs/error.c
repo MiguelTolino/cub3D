@@ -6,11 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 20:23:15 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 14:50:32 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void throw_error(const char *str)
 {

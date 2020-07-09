@@ -6,34 +6,34 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 13:56:03 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:14:38 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-int is_map(char *line) //TODO Considerate another number for bonus
+int			is_map(char *line) //TODO Considerate another number for bonus
 {
 	int i;
 
 	i = 0;
 	if (!*line)
 		return (0);
-	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0' 
+	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0'
 	|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-	 	i++;
+		i++;
 	if (i == ft_strlen(line))
 		return (1);
 	else
 		return (0);
 }
 
-void read_map(int fd)
+void		read_map(int fd)
 {
-	char *line;
-	int c_len;
-	int end;
-	char *aux;
+	char	*line;
+	int		c_len;
+	int		end;
+	char	*aux;
 
 	g_config.map.n_col = 0;
 	g_config.map.n_row = 0;
@@ -57,7 +57,7 @@ void read_map(int fd)
 				g_config.map.n_col = c_len;
 		}
 		if (!end)
-			break;
+			break ;
 	}
 	g_config.map.world_map = parse_map(g_config.map.buff);
 }

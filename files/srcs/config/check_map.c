@@ -6,18 +6,18 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/08 14:45:30 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:05:34 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-static void fill_map(char **map)
+static void		fill_map(char **map)
 {
-	int i;
-	ssize_t len;
-	char padding;
-	char *aux;
+	int			i;
+	ssize_t		len;
+	char		padding;
+	char		*aux;
 
 	i = 0;
 	padding = ' ';
@@ -34,13 +34,13 @@ static void fill_map(char **map)
 	}
 }
 
-char **parse_map(char *buff)
+char			**parse_map(char *buff)
 {
-	char **map;
-	int i;
-	int j;
-	int trigger;
-	char **aux;
+	char		**map;
+	int			i;
+	int			j;
+	int			trigger;
+	char		**aux;
 
 	trigger = 0;
 	map = ft_split(g_config.map.buff, '\n');
@@ -56,12 +56,12 @@ char **parse_map(char *buff)
 				trigger++;
 				g_config.pos_x = i;
 				g_config.pos_y = j;
-				break;
+				break ;
 			}
 			j++;
 		}
 		if (trigger)
-			break;
+			break ;
 		i++;
 	}
 	aux = copy_matrix(g_config.map.n_row, map);
@@ -74,12 +74,13 @@ char **parse_map(char *buff)
 		throw_error("Map is not closed");
 }
 
-int check_map(char **map, int row, int col)
+int			check_map(char **map, int row, int col)
 {
-	char c;
-	int ok;
+	char		c;
+	int			ok;
 
-	if (row < 0 || col < 0 || row >= g_config.map.n_row || col >= g_config.map.n_col)
+	if (row < 0 || col < 0 || row >= g_config.map.n_row
+	|| col >= g_config.map.n_col)
 		return (1);
 	c = map[row][col];
 	if (c == ' ')

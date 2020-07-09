@@ -6,11 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/07 13:36:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3d.h"
 
 static int orientation(t_engine *en)
 {
@@ -48,7 +48,7 @@ static int orientation(t_engine *en)
 	return (0);
 }
 
-static t_key_buff init_key_buff(t_engine *en)
+static t_key_buff init_key_buff()
 {
 	t_key_buff buff;
 	
@@ -63,10 +63,25 @@ static t_key_buff init_key_buff(t_engine *en)
 	return (buff);
 }
 
+static t_fps  init_fps()
+{
+	t_fps fps;
+	
+	fps.time = 0;
+	fps.old_time = 0;
+	fps.counter = 0;
+	fps.max = 0;
+	fps.min = 1000;
+	fps.average = 0;
+	fps.num = 0;
+	return (fps);
+}
+
 void init(t_engine *en)
 {
 	en->pos.x = g_config.pos_x;
 	en->pos.y = g_config.pos_y;
 	orientation(en);
-	en->k_buff = init_key_buff(en);
+	en->k_buff = init_key_buff();
+	en->fps = init_fps();
 }

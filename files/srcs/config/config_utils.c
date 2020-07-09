@@ -6,15 +6,14 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 21:27:24 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 14:48:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:08:38 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-
 //FIXME ERROR IN FUNCTION FREE_STR
-void free_str(char **str)
+void		free_str(char **str)
 {
 	int i;
 
@@ -27,7 +26,7 @@ void free_str(char **str)
 	str = NULL;
 }
 
-int is_digit(char *str)
+int			is_digit(char *str)
 {
 	while (*str)
 	{
@@ -40,7 +39,7 @@ int is_digit(char *str)
 	return (1);
 }
 
-int check_len(char **aux, int num)
+int			check_len(char **aux, int num)
 {
 	int i;
 
@@ -56,11 +55,11 @@ int check_len(char **aux, int num)
 	return (i);
 }
 
-char *pad_right(char padding, int len)
+char		*pad_right(char padding, int len)
 {
-	int i;
-	char *str;
-	
+	int		i;
+	char	*str;
+
 	i = 0;
 	if (!len)
 		return (ft_strdup(""));
@@ -73,10 +72,10 @@ char *pad_right(char padding, int len)
 	return (str);
 }
 
-char **copy_matrix(int n_row, char **map)
+char		**copy_matrix(int n_row, char **map)
 {
-	char **matrix;
-	int i;
+	char	**matrix;
+	int		i;
 
 	i = 0;
 	matrix = (char**)malloc(n_row * sizeof(char*));

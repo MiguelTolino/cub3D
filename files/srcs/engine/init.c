@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 19:13:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/10 00:11:32 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,33 @@ static int orientation(t_engine *en)
 	return (0);
 }
 
-static t_texture init_texture(t_engine *en)
+static t_img* init_texture(t_engine *en)
 {
-	t_texture texture;
+	t_img *texture;
 
-	if (!(texture.NO.ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture.NO.width, &texture.NO.height)))
+	//FIXME We create a pointer that should be free later. Think about any other solution
+	texture = malloc(sizeof(t_img) * 5);
+	bzero(texture, sizeof(t_img));
+	if (!(texture[0].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture[0].width, &texture[0].height)))
 		throw_error("North texture can't be opened");
-	if (!(texture.SO.ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.SO, &texture.SO.width, &texture.SO.height)))
+	if (!(texture[1].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.SO, &texture[1].width, &texture[1].height)))
 		throw_error("South texture can't be opened");
-	if (!(texture.EA.ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.EA, &texture.EA.width, &texture.EA.height)))
+	if (!(texture[2].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.EA, &texture[2].width, &texture[2].height)))
 		throw_error("East texture can't be opened");
-	if (!(texture.WE.ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture.WE.width, &texture.WE.height)))
+	if (!(texture[3].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
-	texture.NO.data = (int*)mlx_get_data_addr(texture.NO.ptr, &texture.NO.bpp, &texture.NO.size_line, &texture.NO.endian);
-	texture.SO.data = (int*)mlx_get_data_addr(texture.SO.ptr, &texture.SO.bpp, &texture.SO.size_line, &texture.SO.endian);
-	texture.EA.data = (int*)mlx_get_data_addr(texture.EA.ptr, &texture.EA.bpp, &texture.EA.size_line, &texture.EA.endian);
-	texture.WE.data = (int*)mlx_get_data_addr(texture.WE.ptr, &texture.WE.bpp, &texture.WE.size_line, &texture.WE.endian);
+	/* if (!(texture[4].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
+		throw_error("Sprite texture can't be opened"); */
+	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr, &texture[0].bpp, &texture[0].size_line, &texture[0].endian);
+	texture[1].data = (int*)mlx_get_data_addr(texture[1].ptr, &texture[1].bpp, &texture[1].size_line, &texture[1].endian);
+	texture[2].data = (int*)mlx_get_data_addr(texture[2].ptr, &texture[2].bpp, &texture[2].size_line, &texture[2].endian);
+	texture[3].data = (int*)mlx_get_data_addr(texture[3].ptr, &texture[3].bpp, &texture[3].size_line, &texture[3].endian);
+	//texture[4].data = (int*)mlx_get_data_addr(texture[4].ptr, &texture[4].bpp, &texture[4].size_line, &texture[4].endian);
 	return (texture);
 }
 static t_key_buff init_key_buff()
@@ -106,5 +113,5 @@ void init(t_engine *en)
 	orientation(en);
 	en->k_buff = init_key_buff();
 	en->fps = init_fps();
-	//en->mlx.texture = init_texture(en);
+	en->mlx.texture = init_texture(en);
 }

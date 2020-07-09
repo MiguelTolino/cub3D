@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 18:55:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 23:03:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,26 @@ typedef struct s_img
 
 } t_img;
 
-typedef struct s_texture
-{
-	t_img NO;
-	t_img SO;
-	t_img EA;
-	t_img WE;
-} t_texture;
-
 typedef struct s_mlx
 {
 	void *ptr;
 	void *win;
 	t_img img;
-	t_texture texture;
+	//t_img texture[4];
+	t_img *texture;
 	t_img sprite;
 } t_mlx;
 
+typedef struct s_tex
+{
+	int num;
+	double wall_x;
+	int x;
+	int y;
+	double step;
+	double pos;
+	
+} t_tex;
 typedef struct s_engine
 {
 	t_vector pos;
@@ -103,6 +106,7 @@ typedef struct s_engine
 	t_mlx mlx;
 	t_key_buff k_buff;
 	t_fps fps;
+	t_tex tex;
 	double move_speed;
 	double rot_speed;
 } t_engine;
@@ -122,5 +126,6 @@ int key_press(int keycode, t_engine *en);
 void get_time(t_engine *en);
 int exit_game(t_engine *en);
 int raycasting(t_engine *en);
+int get_texture(t_engine *en);
 
 #endif

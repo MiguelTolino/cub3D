@@ -5,11 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Updated: 2020/06/24 16:04:19 by user42           ###   ########.fr        #
+#    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
+#    Updated: 2020/07/09 23:17:51 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#What we need
 	#change srcs
 	#change minilibx depends on the OS
 
@@ -30,7 +30,7 @@ OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
 CC:= gcc 
-MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
+MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
 #CFLAGS:= -Wall -Werror -Wextra
 MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf

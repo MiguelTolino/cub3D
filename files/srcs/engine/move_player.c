@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/09 23:59:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,104 +40,75 @@ static int rotate_left(t_engine *en)
 
 static int move_foward(t_engine *en)
 {
-	if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * en->move_speed)][(int)en->pos.y] == '0')
-		en->pos.x += en->dir.x * en->move_speed;
-	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.y * en->move_speed)] == '0')
-		en->pos.y += en->dir.y * en->move_speed;
+	if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
+		en->pos.x += en->dir.x * MOVE_SPEED;
+	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.y * MOVE_SPEED)] == '0')
+		en->pos.y += en->dir.y * MOVE_SPEED;
 }
 
 static int move_backward(t_engine *en)
 {
-	if (g_config.map.world_map[(int)(en->pos.x - en->dir.x * en->move_speed)][(int)en->pos.y] == '0')
-		en->pos.x -= en->dir.x * en->move_speed;
-	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y - en->dir.y * en->move_speed)] == '0')
-		en->pos.y -= en->dir.y * en->move_speed;
+	if (g_config.map.world_map[(int)(en->pos.x - en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
+		en->pos.x -= en->dir.x * MOVE_SPEED;
+	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y - en->dir.y * MOVE_SPEED)] == '0')
+		en->pos.y -= en->dir.y * MOVE_SPEED;
 }
 
 static int move_left(t_engine *en)
 {
-	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.x * en->move_speed)] == '0')
-		en->pos.y += en->dir.x * en->move_speed;
-	if (g_config.map.world_map[(int)(en->pos.x - en->dir.y * en->move_speed)][(int)en->pos.y] == '0')
-		en->pos.x -= en->dir.y * en->move_speed;
+	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.x * MOVE_SPEED)] == '0')
+		en->pos.y += en->dir.x * MOVE_SPEED;
+	if (g_config.map.world_map[(int)(en->pos.x - en->dir.y * MOVE_SPEED)][(int)en->pos.y] == '0')
+		en->pos.x -= en->dir.y * MOVE_SPEED;
 }
 
 static int move_right(t_engine *en)
 {
-	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y - en->dir.x * en->move_speed)] == '0')
-		en->pos.y -= en->dir.x * en->move_speed;
-	if (g_config.map.world_map[(int)(en->pos.x + en->dir.y * en->move_speed)][(int)en->pos.y] == '0')
-		en->pos.x += en->dir.y * en->move_speed;
+	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y - en->dir.x * MOVE_SPEED)] == '0')
+		en->pos.y -= en->dir.x * MOVE_SPEED;
+	if (g_config.map.world_map[(int)(en->pos.x + en->dir.y * MOVE_SPEED)][(int)en->pos.y] == '0')
+		en->pos.x += en->dir.y * MOVE_SPEED;
 }
 
 int movement(t_engine *en)
 {
 	if (en->k_buff.up)
-	{
 		move_foward(en);
-	}
-		if (en->k_buff.down)
-	{
+	if (en->k_buff.down)
 		move_backward(en);
-	}
-		if (en->k_buff.left)
-	{
+	if (en->k_buff.left)
 		move_left(en);
-	}
-		if (en->k_buff.right)
-	{
+	if (en->k_buff.right)
 		move_right(en);
-	}
-		if (en->k_buff.rot_left)
-	{
+	if (en->k_buff.rot_left)
 		rotate_left(en);
-	}
-		if (en->k_buff.rot_right)
-	{
+	if (en->k_buff.rot_right)
 		rotate_right(en);
-	}
 	if (en->k_buff.esc)
-	{
 		exit_game(en);
-	}
-	
 	return (0);
 }
 
- int key_press(int keycode, t_engine *en)
+int key_press(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
-	{
 		en->k_buff.up = 1;
-	}
 	if (keycode == KEY_S)
-	{
 		en->k_buff.down = 1;
-	}
 	if (keycode == KEY_RIGHT)
-	{
 		en->k_buff.rot_right = 1;
-	}
 	if (keycode == KEY_LEFT)
-	{
 		en->k_buff.rot_left = 1;
-	}
 	if (keycode == KEY_A)
-	{
 		en->k_buff.left = 1;
-	}
 	if (keycode == KEY_D)
-	{
 		en->k_buff.right = 1;
-	}
 	if (keycode == KEY_ESC)
-	{
 		en->k_buff.esc = 1;
-	}
 	return (0);
 }
 
- int key_release(int keycode, t_engine *en)
+int key_release(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 	{

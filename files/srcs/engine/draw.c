@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/10 00:10:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/10 13:21:37 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void draw(t_engine *en, int x)
                     en->color = en->color / 2;
                 *(en->mlx.img.data + (i * g_config.R.x) + x) = en->color;
             }
-
         i++;
     }
     while (i < g_config.R.y)

@@ -45,61 +45,43 @@ int get_texture(t_engine *en)
 	return (0);
 }
 
+static void fc_casting_calculate(t_engine *en, int y)
+{
+	en->cf.ray_dir_0.x = en->dir.x - en->plane.x;
+	en->cf.ray_dir_0.y = en->dir.y - en->plane.y;
+	en->cf.ray_dir_1.x = en->dir.x + en->plane.x;
+	en->cf.ray_dir_1.y = en->dir.y + en->plane.y;
+	en->cf.p = y - g_config.R.y / 2;
+	en->cf.pos_z = 0.5 * g_config.R.y;
+	en->cf.row_distance = en->cf.pos_z / en->cf.p;
+	en->cf.floor_step.x = en->cf.row_distance * (en->cf.ray_dir_1.x - en->cf.ray_dir_0.x) / g_config.R.x;
+	en->cf.floor_step.y = en->cf.row_distance * (en->cf.ray_dir_1.y - en->cf.ray_dir_0.y) / g_config.R.x;
+	en->cf.floor.x = en->pos.x + en->cf.row_distance * en->cf.ray_dir_0.x;
+	en->cf.floor.y = en->pos.y + en->cf.row_distance * en->cf.ray_dir_0.y;
+}
+
 void floor_casting(t_engine *en)
 {
 	int x;
 	int y;
 
-	y = g_config.R.y / 2 + 1;
-	//FLOOR CASTING
+	y = 0;
 	while (y < g_config.R.y)
 	{
-		// rayDir for leftmost ray (x = 0) and rightmost ray (x = w)
-		en->cf.ray_dir_0.x = en->dir.x - en->plane.x;
-		en->cf.ray_dir_0.y = en->dir.y - en->plane.y;
-		en->cf.ray_dir_1.x = en->dir.x + en->plane.x;
-		en->cf.ray_dir_1.y = en->dir.y + en->plane.y;
-
-		// Current y position compared to the center of the screen (the horizon)
-		en->cf.p = y - g_config.R.y / 2;
-
-		// Vertical position of the camera.
-		en->cf.pos_z = 0.5 * g_config.R.y;
-
-		// Horizontal distance from the camera to the floor for the current row.
-		// 0.5 is the z position exactly in the middle between floor and ceiling.
-		en->cf.row_distance = en->cf.pos_z / en->cf.p;
-
-		// calculate the real world step vector we have to add for each x (parallel to camera plane)
-		// adding step by step avoids multiplications with a weight in the inner loop
-		en->cf.floor_step.x = en->cf.row_distance * (en->cf.ray_dir_1.x - en->cf.ray_dir_0.x) / g_config.R.x;
-		en->cf.floor_step.y = en->cf.row_distance * (en->cf.ray_dir_1.y - en->cf.ray_dir_0.y) / g_config.R.x;
-
-		// real world coordinates of the leftmost column. This will be updated as we step to the right.
-		en->cf.floor.x = en->pos.x + en->cf.row_distance * en->cf.ray_dir_0.x;
-		en->cf.floor.y = en->pos.y + en->cf.row_distance * en->cf.ray_dir_0.y;
-
+		fc_casting_calculate(en, y);
 		x = 0;
 		while (x < g_config.R.x)
 		{
-			// the cell coord is simply got from the integer parts of floorX and floorY
 			en->cf.cell.x = (int)(en->cf.floor.x);
 			en->cf.cell.y = (int)(en->cf.floor.y);
-
-			// get the texture coordinate from the fractional part
 			en->cf.t.x = (int)(en->mlx.texture[4].width * (en->cf.floor.x - en->cf.cell.x)) & (en->mlx.texture[4].width - 1);
 			en->cf.t.y = (int)(en->mlx.texture[4].height * (en->cf.floor.y - en->cf.cell.y)) & (en->mlx.texture[4].height - 1);
 			en->cf.floor.x += en->cf.floor_step.x;
 			en->cf.floor.y += en->cf.floor_step.y;
-			// floor
 			en->color = (int)en->mlx.texture[5].data[(int)(en->mlx.texture[5].width * en->cf.t.y + en->cf.t.x)];
-			en->color = (en->color >> 1) & 8355711;
 			*(en->mlx.img.data + (y * g_config.R.x) + x) = en->color;
-			//ceiling (symmetrical, at screenHeight - y - 1 instead of y)
 			en->color = (int)en->mlx.texture[4].data[(int)(en->mlx.texture[4].width * en->cf.t.y + en->cf.t.x)];
-			en->color = (en->color >> 1) & 8355711;
-			//buffer[screenHeight - y - 1][x] = color;
-			*(en->mlx.img.data + (((g_config.R.y - y - 1) * g_config.R.x) + x)) = en->color;
+			*(en->mlx.img.data + ((g_config.R.y - y - 1) * g_config.R.x) + x) = en->color;
 			x++;
 		}
 		y++;

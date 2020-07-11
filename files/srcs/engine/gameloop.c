@@ -23,6 +23,5 @@ int gameloop(t_engine *en)
 	mlx_put_image_to_window(en->mlx.ptr, en->mlx.win, en->mlx.img.ptr, 0, 0);
 	mlx_string_put(en->mlx.ptr, en->mlx.win, 20, 20, rgb_int(255, 255, 255), fps);
  	usleep(10000);
-//	free(fps);
 	return (0);
 }

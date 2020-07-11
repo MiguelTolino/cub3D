@@ -95,7 +95,6 @@ int raycasting(t_engine *en)
 		steps_initial_dist(en);
 		dda(en);
 		calc_pixel(en);
-		//en->color = get_color(en);
 		get_texture(en);
 		draw(en, x);
 		x++;

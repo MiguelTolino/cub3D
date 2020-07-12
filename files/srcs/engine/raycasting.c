@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 20:44:13 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/12 23:24:59 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int raycasting(t_engine *en)
 		steps_initial_dist(en);
 		dda(en);
 		calc_pixel(en);
-		//en->color = get_color(en);
 		get_texture(en);
 		draw(en, x);
 		x++;

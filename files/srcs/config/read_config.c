@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 18:18:50 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/12 12:47:20 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ static void save_config(char *line)
 		g_config.F = save_color(line, position);
 	if (position = ft_strnstr(line, "C", ft_strlen(line)))
 		g_config.C = save_color(line, position);
+	if (position = ft_strnstr(line, "FT", ft_strlen(line)))
+		g_config.FT = save_texture(line);
+	if (position = ft_strnstr(line, "CT", ft_strlen(line)))
+		g_config.CT = save_texture(line);
 }
 
 int read_config(char *argv)

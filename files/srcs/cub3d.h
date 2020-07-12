@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/10 00:51:41 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/12 12:43:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,17 @@ typedef struct s_tex
 	double pos;
 	
 } t_tex;
+
+typedef struct s_cf_tex
+{
+	t_vector ray_dir_0;
+	t_vector ray_dir_1;
+	t_vector floor_step;
+	t_vector floor;
+	t_vector cell;
+	t_vector t;
+} t_cf_tex;
+
 typedef struct s_engine
 {
 	t_vector pos;

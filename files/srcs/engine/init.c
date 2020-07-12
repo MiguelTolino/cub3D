@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/10 00:11:32 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/12 20:41:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_img* init_texture(t_engine *en)
 	t_img *texture;
 
 	//FIXME We create a pointer that should be free later. Think about any other solution
-	texture = malloc(sizeof(t_img) * 5);
+	texture = malloc(sizeof(t_img) * 6);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture[0].width, &texture[0].height)))
@@ -67,6 +67,12 @@ static t_img* init_texture(t_engine *en)
 	if (!(texture[3].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
+	if (!(texture[4].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.CT, &texture[4].width, &texture[4].height)))
+		throw_error("Ceiling texture can't be opened");
+	if (!(texture[5].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.FT, &texture[5].width, &texture[5].height)))
+		throw_error("Floor texture can't be opened");
 	/* if (!(texture[4].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
 		throw_error("Sprite texture can't be opened"); */
@@ -74,6 +80,8 @@ static t_img* init_texture(t_engine *en)
 	texture[1].data = (int*)mlx_get_data_addr(texture[1].ptr, &texture[1].bpp, &texture[1].size_line, &texture[1].endian);
 	texture[2].data = (int*)mlx_get_data_addr(texture[2].ptr, &texture[2].bpp, &texture[2].size_line, &texture[2].endian);
 	texture[3].data = (int*)mlx_get_data_addr(texture[3].ptr, &texture[3].bpp, &texture[3].size_line, &texture[3].endian);
+	texture[4].data = (int*)mlx_get_data_addr(texture[4].ptr, &texture[4].bpp, &texture[4].size_line, &texture[4].endian);
+	texture[5].data = (int*)mlx_get_data_addr(texture[5].ptr, &texture[5].bpp, &texture[5].size_line, &texture[5].endian);
 	//texture[4].data = (int*)mlx_get_data_addr(texture[4].ptr, &texture[4].bpp, &texture[4].size_line, &texture[4].endian);
 	return (texture);
 }

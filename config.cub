@@ -1,11 +1,11 @@
 R 720 500
 NO ./files/images/textures/tile201.xpm
 SO ./files/images/textures/tile202.xpm
-WE ./files/images/textures/tile203.xpm
-EA ./files/images/textures/tile204.xpm
+WE   ./files/images/textures/tile203.xpm
+EA  ./files/images/textures/tile204.xpm
 S ./files/images/textures/tile205.xpm
-CF ./files/images/textures/tile206.xpm
-FT ./files/images/textures/tile207.xpm
+TX1 ./files/images/textures/tile255.xpm
+TX2 ./files/images/textures/tile254.xpm
 C    20, 100,  202
 F    20,40,20
 

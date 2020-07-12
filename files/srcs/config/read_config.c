@@ -6,20 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/12 12:47:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/12 14:20:59 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
-
-static int exist_attributes(int num)
-{
-	if (num == NUM_CONFIG)
-		return (1);
-	else
-		throw_error("Bad number of elements in configuration");
-	return (0);
-}
 
 static void save_config(char *line)
 {
@@ -42,9 +33,9 @@ static void save_config(char *line)
 		g_config.F = save_color(line, position);
 	if (position = ft_strnstr(line, "C", ft_strlen(line)))
 		g_config.C = save_color(line, position);
-	if (position = ft_strnstr(line, "FT", ft_strlen(line)))
+	if (position = ft_strnstr(line, "TX1", ft_strlen(line)))
 		g_config.FT = save_texture(line);
-	if (position = ft_strnstr(line, "CT", ft_strlen(line)))
+	if (position = ft_strnstr(line, "TX2", ft_strlen(line)))
 		g_config.CT = save_texture(line);
 }
 
@@ -58,7 +49,8 @@ int read_config(char *argv)
 		throw_error("FD can't be opened");
 	while (get_next_line(fd, &line) > 0 && g_config.counter < NUM_CONFIG)
 		save_config(line);
-	exist_attributes(g_config.counter);
+	if (g_config.counter != NUM_CONFIG)
+		throw_error("Bad number of elements in configuration");
 	read_map(fd);
 	close(fd);
 	return (1);

@@ -4,8 +4,8 @@ SO ./files/images/textures/tile202.xpm
 WE   ./files/images/textures/tile203.xpm
 EA  ./files/images/textures/tile204.xpm
 S ./files/images/textures/tile205.xpm
-TX1 ./files/images/textures/tile255.xpm
-TX2 ./files/images/textures/tile254.xpm
+TX1 ./files/images/textures/tile247.xpm
+TX2 ./files/images/textures/tile212.xpm
 C    20, 100,  202
 F    20,40,20
 

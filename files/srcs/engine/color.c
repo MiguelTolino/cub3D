@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:33:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/09 14:29:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:00:08 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int get_side(t_engine *en)
 }
 int get_color(t_engine *en)
 {
-	//choose wall color
 	int color;
 	if (g_config.map.world_map[en->map_x][en->map_y] == '1')
 		color = get_side(en);

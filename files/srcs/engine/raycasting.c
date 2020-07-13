@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/12 23:24:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/13 19:21:21 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void dda(t_engine *en)
 			en->map_y += en->step_y;
 			en->side = 1;
 		}
-		if (g_config.map.world_map[en->map_x][en->map_y] > '0')
+		if (g_config.map.world_map[en->map_x][en->map_y] == '1')
 			en->hit = 1;
 	}
 	if (en->side == 0)
@@ -96,6 +96,7 @@ int raycasting(t_engine *en)
 		dda(en);
 		calc_pixel(en);
 		get_texture(en);
+		en->z_buff[x] = en->perp_wall_dist;
 		draw(en, x);
 		x++;
 	}

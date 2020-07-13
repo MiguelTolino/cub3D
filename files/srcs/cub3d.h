@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/12 20:36:44 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/13 20:28:20 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_vector
 	double y;
 } t_vector;
 
+typedef struct s_vector_int
+{
+	int x;
+	int y;
+} t_vector_int;
+
 typedef struct s_key_buff
 {
 	int up;
@@ -68,7 +74,6 @@ typedef struct s_mlx
 	void *ptr;
 	void *win;
 	t_img img;
-	//t_img texture[4];
 	t_img *texture;
 	t_img sprite;
 } t_mlx;
@@ -83,6 +88,26 @@ typedef struct s_tex
 	double pos;
 	
 } t_tex;
+
+typedef struct s_sprite
+{
+	double x;
+	double y;
+	int num;
+}t_sprite;
+
+typedef struct s_sprite_cast
+{
+	t_vector sprite;
+	double inv_det;
+	t_vector transform;
+	int sprite_screen_x;
+	int sprite_height;
+	int sprite_width;
+	t_vector_int draw_start;
+	t_vector_int draw_end;
+	int v_move_screen;
+}t_sprite_cast;
 
 typedef struct s_cf_tex
 {
@@ -124,6 +149,12 @@ typedef struct s_engine
 	t_cf_tex cf;
 	double move_speed;
 	double rot_speed;
+	double	*z_buff;
+	int num_sprites;
+	t_sprite *sprite;
+	int *sprite_order;
+	double *sprite_distance;
+
 } t_engine;
 
 int create_window(t_engine *en);
@@ -144,6 +175,10 @@ int raycasting(t_engine *en);
 int get_texture(t_engine *en);
 void floor_casting(t_engine *en);
 int floor_casting_2(t_engine *en, int x);
-
+int get_num_sprites();
+t_sprite *set_sprites(int num);
+int sprite_casting(t_engine *en);
+void sort_sprites_bubble(t_engine *en);
+void sprite_test(t_engine *en);
 
 #endif

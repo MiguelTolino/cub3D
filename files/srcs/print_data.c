@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/12 13:49:03 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/13 18:33:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void print_data(t_engine en)
 	printf("Floor rgb_hex: %s\n", g_config.F.rgb_hex);
 	while (i < 3)
 	{
-		printf("Floor rgb[%i]: %i\n", i , g_config.F.rgb[i]);
+		printf("Floor rgb[%i]: %i\n", i, g_config.F.rgb[i]);
 		i++;
 	}
 	i = 0;
 	printf("Ceiling rgb_hex: %s\n", g_config.C.rgb_hex);
 	while (i < 3)
 	{
-		printf("Ceiling rgb[%i]: %i\n", i , g_config.C.rgb[i]);
+		printf("Ceiling rgb[%i]: %i\n", i, g_config.C.rgb[i]);
 		i++;
 	}
 
 	//TEXTURES
-	
+
 	printf("NO: %s\n", g_config.NO);
 	printf("SO: %s\n", g_config.SO);
 	printf("EA: %s\n", g_config.EA);
@@ -54,10 +54,13 @@ void print_data(t_engine en)
 		printf("%s\n", g_config.map.world_map[i]);
 		i++;
 	}
-	 printf("Position X: %f\n", en.pos.x); 
-	 printf("Position Y: %f\n", en.pos.y);
+	printf("Position X: %f\n", en.pos.x);
+	printf("Position Y: %f\n", en.pos.y);
 
-	 //Direction
-	 printf("DirX: %f\n",en.dir.x);
-	 printf("DirY: %f\n",en.dir.y);
+	i = 0;
+	while (i < en.num_sprites)
+	{
+		printf("Nº%i \t Distance: %f \t Num: %i\n", i, en.sprite_distance[i], en.sprite_order[i]);
+		i++;
+	}
 }

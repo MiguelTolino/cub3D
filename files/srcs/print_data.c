@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 18:33:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:53:01 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void print_data(t_engine en)
 
 	printf("PosX: %i\n", g_config.pos_x);
 	printf("PosY: %i\n", g_config.pos_y);
-	printf("Orientacion: %c\n", g_config.map.world_map[g_config.pos_x][g_config.pos_y]);
+	//printf("Orientacion: %c\n", g_config.map.world_map[g_config.pos_x][g_config.pos_y]);
 	printf("Map:\n");
 	i = 0;
 	while (i < g_config.map.n_row)

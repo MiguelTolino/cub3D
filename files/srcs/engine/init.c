@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 12:20:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:53:44 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ static void init_sprites(t_engine *en)
 
 void init(t_engine *en)
 {
-	en->pos.x = g_config.pos_x;
-	en->pos.y = g_config.pos_y;
+	en->pos.x = g_config.pos_x + 0.5;
+	en->pos.y = g_config.pos_y + 0.5;
 	orientation(en);
 	en->k_buff = init_key_buff();
 	en->fps = init_fps();

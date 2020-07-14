@@ -26,6 +26,7 @@ SRCS := $(wildcard $(SRCS_DIR)*.c) \
 		$(wildcard $(SRCS_DIR)config/*.c) \
 		$(wildcard $(SRCS_DIR)engine/*.c)
 
+WFLAGS:= -Wall -Werror -Wextra
 OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
@@ -44,7 +45,7 @@ all:	libft minilibx $(NAME)
 		@echo "cub3D built"
 
 $(NAME): $(OBJS)
-	$(CC) -g $(OBJS) $(GNL)*.c -o $(NAME) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+	$(CC) -g $(OBJS) $(GNL)*.c -o $(NAME) $(WFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
 
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@ 

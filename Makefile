@@ -30,6 +30,7 @@ WFLAGS:= -Wall -Werror -Wextra
 OBJS := $(SRCS:%.c=%.o)
 OBJS_DIR := ./files/cub3D/objects
 NAME:= cub3D
+IMG:= $(NAME).bmp
 CC:= gcc 
 MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
 #CFLAGS:= -Wall -Werror -Wextra
@@ -67,7 +68,7 @@ clean:
 		$(RM) $(OBJS)
 fclean:
 		make clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) $(IMG)
 		make -C $(LIBFT_DIR) fclean
 		@echo "Removed executable"
 

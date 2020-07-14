@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 10:54:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 13:20:07 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_config
     int pos_x;
     int pos_y;
     char dir;
+    int save;
 } t_config;
 
 t_config g_config;

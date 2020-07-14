@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 20:28:20 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 17:58:35 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,27 @@
 
 #define MOVE_SPEED 0.08
 #define ROT_SPEED 0.05
+
+typedef struct s_bmp
+{
+	unsigned char type[2];
+	int file_size;
+	int reserved;
+	int offset;
+	unsigned int size_header;
+	unsigned int width;
+	unsigned int height;
+	short int planes;
+	short int bit_count;
+	unsigned int compression;
+	unsigned int image_size;
+	unsigned int ppm_x;
+	unsigned int ppm_y;
+	unsigned int clr_used;
+	unsigned int clr_important;
+	int color;
+	
+} t_bmp;
 
 typedef struct s_fps
 {
@@ -86,7 +107,7 @@ typedef struct s_tex
 	int y;
 	double step;
 	double pos;
-	
+
 } t_tex;
 
 typedef struct s_sprite
@@ -94,7 +115,7 @@ typedef struct s_sprite
 	double x;
 	double y;
 	int num;
-}t_sprite;
+} t_sprite;
 
 typedef struct s_sprite_cast
 {
@@ -107,7 +128,7 @@ typedef struct s_sprite_cast
 	t_vector_int draw_start;
 	t_vector_int draw_end;
 	int v_move_screen;
-}t_sprite_cast;
+} t_sprite_cast;
 
 typedef struct s_cf_tex
 {
@@ -149,7 +170,7 @@ typedef struct s_engine
 	t_cf_tex cf;
 	double move_speed;
 	double rot_speed;
-	double	*z_buff;
+	double *z_buff;
 	int num_sprites;
 	t_sprite *sprite;
 	int *sprite_order;
@@ -169,7 +190,7 @@ int rgb_int(int r, int g, int b);
 int key_release(int keycode, t_engine *en);
 int movement(t_engine *en);
 int key_press(int keycode, t_engine *en);
-char* get_time(t_engine *en);
+char *get_time(t_engine *en);
 int exit_game(t_engine *en);
 int raycasting(t_engine *en);
 int get_texture(t_engine *en);
@@ -180,5 +201,6 @@ t_sprite *set_sprites(int num);
 int sprite_casting(t_engine *en);
 void sort_sprites_bubble(t_engine *en);
 void sprite_test(t_engine *en);
+int save_bmp(t_engine *en);
 
 #endif

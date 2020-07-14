@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:01:42 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 20:52:18 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 13:22:34 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int gameloop(t_engine *en)
 	fps = get_time(en);
 	mlx_put_image_to_window(en->mlx.ptr, en->mlx.win, en->mlx.img.ptr, 0, 0);
 	mlx_string_put(en->mlx.ptr, en->mlx.win, 20, 20, rgb_int(255, 255, 255), fps);
+	if (g_config.save)
+	{
+		save_bmp(en);
+		exit_game(en);
+	}
 	destroy_create_image(en);
 	usleep(10000);
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 19:21:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:55:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void dda(t_engine *en)
+static void	dda(t_engine *en)
 {
 	while (en->hit == 0)
 	{
@@ -32,13 +32,15 @@ static void dda(t_engine *en)
 			en->hit = 1;
 	}
 	if (en->side == 0)
-		en->perp_wall_dist = (en->map_x - en->pos.x + (1 - en->step_x) / 2) / en->ray_dir.x;
+		en->perp_wall_dist = (en->map_x - en->pos.x + (1 - en->step_x) / 2)
+		/ en->ray_dir.x;
 	else
-		en->perp_wall_dist = (en->map_y - en->pos.y + (1 - en->step_y) / 2) / en->ray_dir.y;
+		en->perp_wall_dist = (en->map_y - en->pos.y + (1 - en->step_y) / 2)
+		/ en->ray_dir.y;
 	en->line_height = (int)(g_config.R.y / en->perp_wall_dist);
 }
 
-static void calc_pixel(t_engine *en)
+static void	calc_pixel(t_engine *en)
 {
 	en->draw_start = -en->line_height / 2 + g_config.R.y / 2;
 	if (en->draw_start < 0)
@@ -48,7 +50,7 @@ static void calc_pixel(t_engine *en)
 		en->draw_end = g_config.R.y - 1;
 }
 
-static void steps_initial_dist(t_engine *en)
+static void	steps_initial_dist(t_engine *en)
 {
 	if (en->ray_dir.x < 0)
 	{
@@ -72,7 +74,7 @@ static void steps_initial_dist(t_engine *en)
 	}
 }
 
-static void init_calc(t_engine *en, int x)
+static void	init_calc(t_engine *en, int x)
 {
 	en->camera.x = 2 * x / (double)g_config.R.x - 1;
 	en->ray_dir.x = en->dir.x + en->plane.x * en->camera.x;
@@ -84,7 +86,7 @@ static void init_calc(t_engine *en, int x)
 	en->hit = 0;
 }
 
-int raycasting(t_engine *en)
+int			raycasting(t_engine *en)
 {
 	int x;
 

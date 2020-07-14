@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 20:49:14 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:44:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,23 @@
 #define VDIV 1
 #define VMOVE 128.0
 
-static void sort_sprites(t_engine *en)
+static void			sort_sprites(t_engine *en)
 {
-	int i;
+	int				i;
 
 	i = 0;
 	while (i < en->num_sprites)
 	{
 		en->sprite_order[i] = i;
-		en->sprite_distance[i] = ((en->pos.x - en->sprite[i].x) * (en->pos.x - en->sprite[i].x) + (en->pos.y - en->sprite[i].y) * (en->pos.y - en->sprite[i].y));
+		en->sprite_distance[i] = ((en->pos.x - en->sprite[i].x) *
+		(en->pos.x - en->sprite[i].x) + (en->pos.y - en->sprite[i].y) *
+		(en->pos.y - en->sprite[i].y));
 		i++;
 	}
 	sort_sprites_bubble(en);
 }
 
-static void sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
+static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 {
 	s->sprite.x = en->sprite[en->sprite_order[i]].x - en->pos.x;
 	s->sprite.y = en->sprite[en->sprite_order[i]].y - en->pos.y;
@@ -54,11 +56,11 @@ static void sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 		s->draw_end.x = g_config.R.x - 1;
 }
 
-static void put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int i)
+static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int i)
 {
-	t_vector_int tex;
-	int d;
-	int y;
+	t_vector_int	tex;
+	int				d;
+	int				y;
 
 	tex.x = (int)(256 * (stripe - (-s.sprite_width / 2 + s.sprite_screen_x)) * 64 / s.sprite_width) / 256;
 	if (s.transform.y > 0 && stripe > 0 && stripe < g_config.R.x && s.transform.y < en->z_buff[stripe])
@@ -76,12 +78,12 @@ static void put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int i
 	}
 }
 
-int sprite_casting(t_engine *en)
+int				sprite_casting(t_engine *en)
 {
-	int i;
-	int y;
-	int stripe;
-	t_sprite_cast s;
+	int				i;
+	int				y;
+	int				stripe;
+	t_sprite_cast	s;
 
 	i = 0;
 	sort_sprites(en);

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/10 00:42:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:14:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int move_right(t_engine *en)
 		en->pos.x += en->dir.y * MOVE_SPEED;
 }
 
-int movement(t_engine *en)
+int		movement(t_engine *en)
 {
 	if (en->k_buff.up)
 		move_foward(en);
@@ -89,7 +89,7 @@ int movement(t_engine *en)
 	return (0);
 }
 
-int key_press(int keycode, t_engine *en)
+int		key_press(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 		en->k_buff.up = 1;
@@ -108,7 +108,7 @@ int key_press(int keycode, t_engine *en)
 	return (0);
 }
 
-int key_release(int keycode, t_engine *en)
+int		key_release(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 		en->k_buff.up = 0;

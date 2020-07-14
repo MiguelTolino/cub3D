@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 17:58:35 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:24:29 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,6 @@ t_sprite *set_sprites(int num);
 int sprite_casting(t_engine *en);
 void sort_sprites_bubble(t_engine *en);
 void sprite_test(t_engine *en);
-int save_bmp(t_engine *en);
+void save_bmp(t_engine *en);
 
 #endif

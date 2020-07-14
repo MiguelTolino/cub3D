@@ -6,16 +6,16 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 12:30:58 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 11:00:25 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:38:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char *get_time(t_engine *en)
+char		*get_time(t_engine *en)
 {
-	double frame_time;
-	char *buff;
+	double	frame_time;
+	char	*buff;
 
 	buff = malloc(sizeof(char) * 6);
 	en->fps.old_time = en->fps.time;

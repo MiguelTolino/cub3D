@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 18:25:58 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/13 00:14:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:08:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ int	create_window(t_engine *en)
 		throw_error("Image cannot be created");
 	en->mlx.img.data = (int *)mlx_get_data_addr(en->mlx.img.ptr,
 	&en->mlx.img.bpp, &en->mlx.img.size_line, &en->mlx.img.endian);
-    return (0);
+	return (0);
 }

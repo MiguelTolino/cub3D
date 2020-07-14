@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 20:44:15 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/12 23:48:26 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:13:29 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int get_side(t_engine *en)
+static int	get_side(t_engine *en)
 {
 	int num;
 
@@ -27,7 +27,7 @@ static int get_side(t_engine *en)
 	return (num);
 }
 
-int get_texture(t_engine *en)
+int			get_texture(t_engine *en)
 {
 	en->tex.num = get_side(en);
 	if (en->side == 0)
@@ -45,7 +45,7 @@ int get_texture(t_engine *en)
 	return (0);
 }
 
-static void fc_casting_calculate(t_engine *en, int y)
+static void	fc_casting_calculate(t_engine *en, int y)
 {
 	en->cf.ray_dir_0.x = en->dir.x - en->plane.x;
 	en->cf.ray_dir_0.y = en->dir.y - en->plane.y;
@@ -60,7 +60,7 @@ static void fc_casting_calculate(t_engine *en, int y)
 	en->cf.floor.y = en->pos.y + en->cf.row_distance * en->cf.ray_dir_0.y;
 }
 
-void floor_casting(t_engine *en)
+void		floor_casting(t_engine *en)
 {
 	int x;
 	int y;

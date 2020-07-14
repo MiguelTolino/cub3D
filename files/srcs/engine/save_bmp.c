@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 11:34:09 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 18:03:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:16:46 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 #define DPI 100
 #define BMP_HEADER_SIZE 54
 
-static t_bmp init_bmp(t_engine *en)
+static t_bmp	init_bmp(t_engine *en)
 {
 	t_bmp bmp;
 	int ppm;
-	
+
 	ppm = 40 * DPI;
 	bmp.type[0] = 'B';
 	bmp.type[1] = 'M';
@@ -39,7 +39,7 @@ static t_bmp init_bmp(t_engine *en)
 	return (bmp);
 }
 
-static void write_bmp(int fd, t_bmp bmp)
+static void		write_bmp(int fd, t_bmp bmp)
 {
 	write(fd, &bmp.type, sizeof(bmp.type));
 	write(fd, &bmp.file_size, sizeof(bmp.file_size));
@@ -58,8 +58,7 @@ static void write_bmp(int fd, t_bmp bmp)
 	write(fd, &bmp.clr_important, sizeof(bmp.clr_important));
 }
 
-
-int save_bmp(t_engine *en)
+void			save_bmp(t_engine *en)
 {
 	int fd;
 	int x;
@@ -67,7 +66,8 @@ int save_bmp(t_engine *en)
 	t_bmp bmp;
 	int color;
 
-	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT, S_IRWXU | O_TRUNC | O_APPEND)))
+	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT, S_IRWXU |
+	O_TRUNC | O_APPEND)))
 		throw_error("BMP Failed. Not created");
 	bmp = init_bmp(en);
 	write_bmp(fd, bmp);
@@ -77,12 +77,12 @@ int save_bmp(t_engine *en)
 		x = 0;
 		while (x < g_config.R.x)
 		{
-			color = *(en->mlx.img.data + (g_config.R.y - y - 1) * g_config.R.x + x);
+			color = *(en->mlx.img.data + (g_config.R.y - y - 1) *
+			g_config.R.x + x);
 			write(fd, &color, 4);
 			x++;
 		}
 		y++;
 	}
 	close(fd);
-	return (0);
 }

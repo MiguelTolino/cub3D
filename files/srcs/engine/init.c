@@ -6,15 +6,16 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 10:53:44 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:48:42 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int orientation(t_engine *en)
+static int	orientation(t_engine *en)
 {
-	char dir;
+	char	dir;
+
 	dir = g_config.map.world_map[g_config.pos_x][g_config.pos_y];
 	g_config.map.world_map[g_config.pos_x][g_config.pos_y] = '0';
 	if (dir == 'N')
@@ -48,9 +49,9 @@ static int orientation(t_engine *en)
 	return (0);
 }
 
-static t_img* init_texture(t_engine *en)
+static t_img	*init_texture(t_engine *en)
 {
-	t_img *texture;
+	t_img		*texture;
 
 	//FIXME We create a pointer that should be free later. Think about any other solution
 	texture = malloc(sizeof(t_img) * 7);
@@ -73,7 +74,7 @@ static t_img* init_texture(t_engine *en)
 	if (!(texture[5].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.FT, &texture[5].width, &texture[5].height)))
 		throw_error("Floor texture can't be opened");
-	 if (!(texture[6].ptr =
+	if (!(texture[6].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S, &texture[6].width, &texture[6].height)))
 		throw_error("Sprite texture can't be opened");
 	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr, &texture[0].bpp, &texture[0].size_line, &texture[0].endian);
@@ -86,9 +87,7 @@ static t_img* init_texture(t_engine *en)
 	return (texture);
 }
 
-
-
-static t_key_buff init_key_buff()
+static t_key_buff	init_key_buff(void)
 {
 	t_key_buff buff;
 
@@ -103,7 +102,7 @@ static t_key_buff init_key_buff()
 	return (buff);
 }
 
-static t_fps init_fps()
+static t_fps	init_fps(void)
 {
 	t_fps fps;
 

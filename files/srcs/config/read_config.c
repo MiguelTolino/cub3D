@@ -6,15 +6,15 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 10:57:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:19:26 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-static void save_config(char *line)
+static void	save_config(char *line)
 {
-	char *position;
+	char	*position;
 
 	position = NULL;
 	if (position = ft_strnstr(line, "R", ft_strlen(line)))
@@ -41,10 +41,10 @@ static void save_config(char *line)
 			g_config.C = save_color(line, position);
 }
 
-int read_config(char *argv)
+int			read_config(char *argv)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
 
 	g_config.counter = -1;
 	if ((fd = open(argv, O_RDONLY)) <= 0)

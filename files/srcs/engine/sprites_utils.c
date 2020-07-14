@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 13:37:19 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/13 19:06:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:05:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int get_num_sprites()
+int				get_num_sprites(void)
 {
 	int i;
 	int j;
@@ -36,12 +36,12 @@ int get_num_sprites()
 	return (num);
 }
 
-t_sprite *set_sprites(int num)
+t_sprite		*set_sprites(int num)
 {
-	t_sprite *sprites;
-	int i;
-	int j;
-	int cont;
+	t_sprite	*sprites;
+	int			i;
+	int			j;
+	int			cont;
 
 	i = 0;
 	cont = 0;
@@ -65,11 +65,11 @@ t_sprite *set_sprites(int num)
 	return (sprites);
 }
 
-void sort_sprites_bubble(t_engine *en)
+void			sort_sprites_bubble(t_engine *en)
 {
-	int i;
-	double tmp;
-	int tmp2;
+	int		i;
+	double	tmp;
+	int		tmp2;
 
 	i = 0;
 	while (i < en->num_sprites - 1)

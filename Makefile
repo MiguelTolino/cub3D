@@ -46,7 +46,7 @@ all:	libft minilibx $(NAME)
 		@echo "cub3D built"
 
 $(NAME): $(OBJS)
-	$(CC) -g $(OBJS) $(GNL)*.c -o $(NAME) $(WFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(WFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
 
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@ 
@@ -75,10 +75,6 @@ fclean:
 re:
 	make fclean all
 	@echo "All files has been deleted and recompiled"
-
-normi:
-	norminette files/lib
-	norminette files/srcs
 
 .PHONY: clean fclean all re objects debug minilibx libft objects normi
 

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:01:42 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 13:22:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 18:24:17 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int gameloop(t_engine *en)
 		exit_game(en);
 	}
 	destroy_create_image(en);
-	usleep(10000);
 	return (0);
 }
 

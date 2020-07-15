@@ -6,17 +6,17 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 20:24:29 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 17:46:07 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "../includes/mlx.h"
+#include "../../includes/mlx.h"
 #include "config/config.h"
 #include <math.h>
-#include "../includes/key_linux.h"
+#include "../../includes/key_linux.h"
 #include <time.h>
 
 #define MOVE_SPEED 0.08

@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_sprites.c                                      :+:      :+:    :+:   */
+/*   get_sprites_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 19:44:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub3d_bonus.h"
 #define UDIV 1
 #define VDIV 1
 #define VMOVE 128.0
+
+static int choose_texture(t_engine *en, int i, t_vector_int tex)
+{
+	int color;
+	
+	if (en->sprite[i].num == 2)
+		color = en->mlx.texture[6].data[en->mlx.texture[6].width * tex.y + tex.x];
+	return (color);
+}
 
 static void			sort_sprites(t_engine *en)
 {
@@ -70,7 +79,7 @@ static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int
 		{
 			d = (y - s.v_move_screen) * 256 - g_config.R.y * 128 + s.sprite_height * 128;
 			tex.y = ((d * 64) / s.sprite_height) / 256;
-			en->color = en->mlx.texture[6].data[64 * tex.y + tex.x];
+			en->color = choose_texture(en, i, tex);
 			if (en->color != en->mlx.texture[6].data[0])
 				*(en->mlx.img.data + (y * g_config.R.x) + stripe) = en->color;
 			y++;

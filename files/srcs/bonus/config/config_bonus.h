@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   config.h                                           :+:      :+:    :+:   */
+/*   config_bonus.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,8 +17,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "../../lib/libft/libft.h"
-#include "../../lib/get_next_line/get_next_line.h"
+#include "../../../lib/libft/libft.h"
+#include "../../../lib/get_next_line/get_next_line.h"
 
 #define MAX_WIDTH 1920
 #define MAX_HEIGHT 1080

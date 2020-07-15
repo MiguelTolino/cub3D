@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 20:10:34 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/04/05 20:23:15 by miguel            #+#    #+#             */
+/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d_bonus.h"
 
-void	draw(t_engine *en, int x)
+void		throw_error(const char *str)
 {
-	int i;
+	char	*str2;
 
-	i = en->draw_start;
-	while (i < en->draw_end)
-	{
-		en->tex.y = (int)en->tex.pos & (en->mlx.texture[en->tex.num].height - 1);
-		en->tex.pos += en->tex.step;
-		en->color = en->mlx.texture[en->tex.num].data[en->mlx.texture[en->tex.num].height * en->tex.y + en->tex.x];
-		*(en->mlx.img.data + (i * g_config.R.x) + x) = en->color;
-		i++;
-	}
+	str2 = ft_strjoin("Error\n", str);
+	perror(str2);
+	free(str2);
+	exit(EXIT_FAILURE);
+}
+
+int			exit_game(t_engine *en)
+{
+	mlx_destroy_window(en->mlx.ptr, en->mlx.win);
+	exit(EXIT_SUCCESS);
+	return (0);
 }

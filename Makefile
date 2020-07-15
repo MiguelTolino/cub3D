@@ -20,15 +20,16 @@
 #make clean		#remove all binaries
 #make fclean		#remove all binaries and executable 
 
-SRCS_DIR:= files/srcs/
+SRCS_DIR:= files/srcs/mandatory/
+SRCS_DIR_BONUS:= files/srcs/bonus/
 SRCS := $(wildcard $(SRCS_DIR)*.c) \
 		$(wildcard $(GNL)*.c) \
 		$(wildcard $(SRCS_DIR)config/*.c) \
 		$(wildcard $(SRCS_DIR)engine/*.c)
-SRCS_BONUS :=	$(wildcard $(SRCS_DIR)*.c) \
+SRCS_BONUS :=	$(wildcard $(SRCS_DIR_BONUS)*.c) \
 				$(wildcard $(GNL)*.c) \
-				$(wildcard $(SRCS_DIR)config/*.c) \
-				$(wildcard $(SRCS_DIR)bonus/*.c)
+				$(wildcard $(SRCS_DIR_BONUS)config/*.c) \
+				$(wildcard $(SRCS_DIR_BONUS)engine/*.c)
 OBJS := $(SRCS:%.c=%.o)
 OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 NAME:= cub3D
@@ -89,4 +90,3 @@ re:
 
 
 .PHONY: clean fclean all re objects debug minilibx libft objects bonus
-

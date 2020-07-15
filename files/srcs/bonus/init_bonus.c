@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:02:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:48:42 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static t_img	*init_texture(t_engine *en)
 {
 	t_img		*texture;
 
+	//FIXME We create a pointer that should be free later. Think about any other solution
 	texture = malloc(sizeof(t_img) * 7);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
@@ -101,6 +102,20 @@ static t_key_buff	init_key_buff(void)
 	return (buff);
 }
 
+static t_fps	init_fps(void)
+{
+	t_fps fps;
+
+	fps.time = 0;
+	fps.old_time = 0;
+	fps.counter = 0;
+	fps.max = 0;
+	fps.min = 1000;
+	fps.average = 0;
+	fps.num = 0;
+	return (fps);
+}
+
 static void init_sprites(t_engine *en)
 {
 	en->num_sprites = get_num_sprites();
@@ -116,6 +131,7 @@ void init(t_engine *en)
 	en->pos.y = g_config.pos_y + 0.5;
 	orientation(en);
 	en->k_buff = init_key_buff();
+	en->fps = init_fps();
 	en->mlx.texture = init_texture(en);
 	init_sprites(en);
 }

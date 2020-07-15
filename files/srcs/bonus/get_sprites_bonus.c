@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:00:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/14 19:44:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int
 	int				d;
 	int				y;
 
-	tex.x = (int)(256 * (stripe - (-s.sprite_width / 2 + s.sprite_screen_x)) * en->mlx.texture[6].width / s.sprite_width) / 256;
+	tex.x = (int)(256 * (stripe - (-s.sprite_width / 2 + s.sprite_screen_x)) * 64 / s.sprite_width) / 256;
 	if (s.transform.y > 0 && stripe > 0 && stripe < g_config.R.x && s.transform.y < en->z_buff[stripe])
 	{
 		y = s.draw_start.y;
@@ -70,7 +70,7 @@ static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int
 		{
 			d = (y - s.v_move_screen) * 256 - g_config.R.y * 128 + s.sprite_height * 128;
 			tex.y = ((d * 64) / s.sprite_height) / 256;
-			en->color = en->mlx.texture[6].data[en->mlx.texture[6].width * tex.y + tex.x];
+			en->color = en->mlx.texture[6].data[64 * tex.y + tex.x];
 			if (en->color != en->mlx.texture[6].data[0])
 				*(en->mlx.img.data + (y * g_config.R.x) + stripe) = en->color;
 			y++;

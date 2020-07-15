@@ -25,15 +25,17 @@ SRCS := $(wildcard $(SRCS_DIR)*.c) \
 		$(wildcard $(GNL)*.c) \
 		$(wildcard $(SRCS_DIR)config/*.c) \
 		$(wildcard $(SRCS_DIR)engine/*.c)
-
-WFLAGS:= -Wall -Werror -Wextra
+SRCS_BONUS :=	$(wildcard $(SRCS_DIR)*.c) \
+				$(wildcard $(GNL)*.c) \
+				$(wildcard $(SRCS_DIR)config/*.c) \
+				$(wildcard $(SRCS_DIR)bonus/*.c)
 OBJS := $(SRCS:%.c=%.o)
-OBJS_DIR := ./files/cub3D/objects
+OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 NAME:= cub3D
 IMG:= $(NAME).bmp
 CC:= gcc 
 MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
-#CFLAGS:= -Wall -Werror -Wextra
+#CFLAGS:= -Wall -Werror -Wextra -I.
 MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf
 LIBFT_DIR:= ./files/lib/libft
@@ -41,12 +43,13 @@ DEBUG_FLAG:= -g
 GNL:= files/lib/get_next_line/
 
 
-all:	libft minilibx $(NAME)
-		@echo "Compiling all files"
-		@echo "cub3D built"
+all:	libft minilibx $(NAME) msg
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(WFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+
+bonus: libft minilibx $(OBJS_BONUS) 
+	$(CC) $(OBJS_BONUS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
 
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@ 
@@ -65,16 +68,24 @@ clean:
 		@echo "Removing objects"
 		make -C $(LIBFT_DIR) clean
 #		make -C $(MLX_DIR) clean
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(OBJS_BONUS)
 fclean:
 		make clean
 		$(RM) $(NAME) $(IMG)
 		make -C $(LIBFT_DIR) fclean
 		@echo "Removed executable"
+msg:
+		@echo  "\e[42m                   \e[0m"
+		@echo  "\e[92mAll files compiled"
+		@echo  "cub3D built"
+		@echo  "\e[93mENJOY IT!!"
+		@echo  "\e[42m                   \e[0m"
 
 re:
 	make fclean all
 	@echo "All files has been deleted and recompiled"
 
-.PHONY: clean fclean all re objects debug minilibx libft objects normi
+
+
+.PHONY: clean fclean all re objects debug minilibx libft objects bonus
 

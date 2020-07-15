@@ -1,13 +1,13 @@
 R 1920 1080
-NO  .files/images/textures/tile205.xpm
-SO .files/images/textures/tile206.xpm
-WE .files/images/textures/tile207.xpm
-EA   .files/images/textures/tile208.xpm
+NO  ./files/images/textures/tile222.xpm
+SO ./files/images/textures/tile206.xpm
+WE ./files/images/textures/tile207.xpm
+EA      ./files/images/textures/tile208.xpm
 
-S .files/images/sprites/slugma.xpm
+S           ./files/images/sprites/slugma.xpm
 
-F 	10,  100, 39
-C   152, 198, 227
+F 	  10,  100, 39
+C         152, 198, 227
 
 
 1111111111111

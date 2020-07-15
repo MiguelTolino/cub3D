@@ -6,19 +6,16 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/06 00:27:38 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/12 14:16:13 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:22:13 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-//TODO Imágenes son reproducidas "on the fly". Si ese es el caso corregir funcion
-
 char		*save_texture(char *line)
 {
 	char	**num_str;
 	char	*filename;
-	char	*aux;
 
 	num_str = ft_split(line, ' ');
 	check_len(num_str, 2);

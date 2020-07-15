@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 04:21:21 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 13:20:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:24:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void free_str(char **str);
 char *save_texture(char *line);
 int check_arg(int argc, char **argv);
 char *pad_right(char c, int len);
-char **parse_map(char *buff);
+char **parse_map();
 int check_map(char **map, int row, int col);
 char **copy_matrix(int m, char **array);
 

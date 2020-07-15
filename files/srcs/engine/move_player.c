@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:06:02 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:29:07 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int rotate_right(t_engine *en)
+static void rotate_right(t_engine *en)
 {
 	double old_dir_x;
 	double old_plane_x;
@@ -25,7 +25,7 @@ static int rotate_right(t_engine *en)
 	en->plane.y = old_plane_x * sin(-ROT_SPEED) + en->plane.y * cos(-ROT_SPEED);
 }
 
-static int rotate_left(t_engine *en)
+static void rotate_left(t_engine *en)
 {
 	double old_dir_x;
 	double old_plane_x;
@@ -38,7 +38,7 @@ static int rotate_left(t_engine *en)
 	en->plane.y = old_plane_x * sin(ROT_SPEED) + en->plane.y * cos(ROT_SPEED);
 }
 
-static int move_foward(t_engine *en)
+static void move_foward(t_engine *en)
 {
 	if (g_config.map.world_map[(int)(en->pos.x + en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
 		en->pos.x += en->dir.x * MOVE_SPEED;
@@ -46,7 +46,7 @@ static int move_foward(t_engine *en)
 		en->pos.y += en->dir.y * MOVE_SPEED;
 }
 
-static int move_backward(t_engine *en)
+static void move_backward(t_engine *en)
 {
 	if (g_config.map.world_map[(int)(en->pos.x - en->dir.x * MOVE_SPEED)][(int)en->pos.y] == '0')
 		en->pos.x -= en->dir.x * MOVE_SPEED;
@@ -54,7 +54,7 @@ static int move_backward(t_engine *en)
 		en->pos.y -= en->dir.y * MOVE_SPEED;
 }
 
-static int move_left(t_engine *en)
+static void move_left(t_engine *en)
 {
 	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y + en->dir.x * MOVE_SPEED)] == '0')
 		en->pos.y += en->dir.x * MOVE_SPEED;
@@ -62,7 +62,7 @@ static int move_left(t_engine *en)
 		en->pos.x -= en->dir.y * MOVE_SPEED;
 }
 
-static int move_right(t_engine *en)
+static void move_right(t_engine *en)
 {
 	if (g_config.map.world_map[(int)en->pos.x][(int)(en->pos.y - en->dir.x * MOVE_SPEED)] == '0')
 		en->pos.y -= en->dir.x * MOVE_SPEED;

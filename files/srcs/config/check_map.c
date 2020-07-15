@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 10:53:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:26:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void		fill_map(char **map)
 	}
 }
 
-char			**parse_map(char *buff)
+char			**parse_map()
 {
 	char		**map;
 	int			i;
@@ -72,6 +72,7 @@ char			**parse_map(char *buff)
 	}
 	else
 		throw_error("Map is not closed");
+	return (0);
 }
 
 int			check_map(char **map, int row, int col)

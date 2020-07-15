@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/08 18:14:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:27:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			is_map(char *line) //TODO Considerate another number for bonus
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	if (!*line)
@@ -59,5 +59,5 @@ void		read_map(int fd)
 		if (!end)
 			break ;
 	}
-	g_config.map.world_map = parse_map(g_config.map.buff);
+	g_config.map.world_map = parse_map();
 }

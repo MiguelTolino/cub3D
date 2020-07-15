@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 11:34:09 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 20:16:46 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:30:15 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define DPI 100
 #define BMP_HEADER_SIZE 54
 
-static t_bmp	init_bmp(t_engine *en)
+static t_bmp	init_bmp()
 {
 	t_bmp bmp;
 	int ppm;
@@ -69,7 +69,7 @@ void			save_bmp(t_engine *en)
 	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT, S_IRWXU |
 	O_TRUNC | O_APPEND)))
 		throw_error("BMP Failed. Not created");
-	bmp = init_bmp(en);
+	bmp = init_bmp();
 	write_bmp(fd, bmp);
 	y = 0;
 	while (y < g_config.R.y)

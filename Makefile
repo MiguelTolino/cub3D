@@ -35,7 +35,7 @@ NAME:= cub3D
 IMG:= $(NAME).bmp
 CC:= gcc 
 MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
-#CFLAGS:= -Wall -Werror -Wextra -I.
+CFLAGS:= -Wall -Werror -Wextra -I.
 MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf
 LIBFT_DIR:= ./files/lib/libft
@@ -78,6 +78,7 @@ msg:
 		@echo  "\e[42m                   \e[0m"
 		@echo  "\e[92mAll files compiled"
 		@echo  "cub3D built"
+		@echo  "Execute--> ./cub3D 'name'.cub"
 		@echo  "\e[93mENJOY IT!!"
 		@echo  "\e[42m                   \e[0m"
 

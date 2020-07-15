@@ -30,7 +30,6 @@ int		main(int argc, char **argv)
 	create_window(&en);
 	init(&en);
 	gameloop(&en);
-	print_data(en);
 	hooks(en);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:00:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:28:28 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 		s->draw_end.x = g_config.R.x - 1;
 }
 
-static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int i)
+static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe)
 {
 	t_vector_int	tex;
 	int				d;
@@ -81,7 +81,6 @@ static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int
 int				sprite_casting(t_engine *en)
 {
 	int				i;
-	int				y;
 	int				stripe;
 	t_sprite_cast	s;
 
@@ -93,7 +92,7 @@ int				sprite_casting(t_engine *en)
 		stripe = s.draw_start.x;
 		while (stripe < s.draw_end.x)
 		{
-			put_sprite_to_image(en, s, stripe, i);
+			put_sprite_to_image(en, s, stripe);
 			stripe++;
 		}
 		i++;

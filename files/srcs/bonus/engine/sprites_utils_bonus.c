@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 13:37:19 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 01:30:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				get_num_sprites(void)
 		j = 0;
 		while (j < g_config.map.n_col)
 		{
-			if (g_config.map.world_map[i][j] == '2')
+			if (g_config.map.world_map[i][j] == '2' || g_config.map.world_map[i][j] == '5')
 			{
 				num++;
 			}
@@ -51,7 +51,7 @@ t_sprite		*set_sprites(int num)
 		j = 0;
 		while (j < g_config.map.n_col)
 		{
-			if (g_config.map.world_map[i][j] == '2')
+			if (g_config.map.world_map[i][j] == '2' ||  g_config.map.world_map[i][j] == '5')
 			{
 				sprites[cont].num = g_config.map.world_map[i][j] - '0';
 				sprites[cont].x = i + 0.6;
@@ -65,24 +65,24 @@ t_sprite		*set_sprites(int num)
 	return (sprites);
 }
 
-void			sort_sprites_bubble(t_engine *en)
+void	sort_sprites_bubble(t_engine *en)
 {
-	int		i;
-	double	tmp;
-	int		tmp2;
+	int			i;
+	double		dist_swap;
+	t_sprite	s;
 
-	i = 0;
-	while (i < en->num_sprites - 1)
+	i = 1;
+	while (i < en->num_sprites)
 	{
-		if (en->sprite_distance[i] < en->sprite_distance[i + 1])
+		if (en->sprite_distance[i - 1] < en->sprite_distance[i])
 		{
-			tmp = en->sprite_distance[i + 1];
-			en->sprite_distance[i + 1] = en->sprite_distance[i];
-			en->sprite_distance[i] = tmp;
-			tmp2 = en->sprite_order[i + 1];
-			en->sprite_order[i + 1] = en->sprite_order[i];
-			en->sprite_order[i] = tmp2;
-			i = 0;
+			dist_swap = en->sprite_distance[i - 1];
+			en->sprite_distance[i - 1] = en->sprite_distance[i];
+			en->sprite_distance[i] = dist_swap;
+			s = en->sprite[i - 1];
+			en->sprite[i - 1] = en->sprite[i];
+			en->sprite[i] = s;
+			i = 1;
 		}
 		else
 			i++;

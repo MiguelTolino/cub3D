@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 20:05:39 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 20:55:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void print_data(t_engine en)
 	printf("SO: %s\n", g_config.SO);
 	printf("EA: %s\n", g_config.EA);
 	printf("WE: %s\n", g_config.WE);
-	printf("S: %s\n", g_config.S);
+	printf("S1: %s\n", g_config.S1);
+	printf("S2: %s\n", g_config.S2);
 	printf("CT: %s\n", g_config.CT);
 	printf("FT: %s\n", g_config.FT);
 	printf("TX1: %s\n", g_config.TX1);

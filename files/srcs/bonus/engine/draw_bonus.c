@@ -6,11 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 18:07:36 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 01:27:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
+#define DARKNESS 2
 
 int		dark_color(double distance, int color)
 {
@@ -20,7 +21,9 @@ int		dark_color(double distance, int color)
 	int g;
 	int b;
 
-	dark = (3 / distance);
+	dark = (DARKNESS / distance);
+	if (!dark)
+		dark = 1;
 	c.rgb[0] = (color >> 16) & 255;
 	c.rgb[1] = (color >> 8) & 255;
 	c.rgb[2] =  color & 255;

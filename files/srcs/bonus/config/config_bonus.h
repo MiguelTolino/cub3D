@@ -56,11 +56,12 @@ typedef struct s_config
     char *SO;
     char *WE;
     char *EA;
-    char *S;
+    char *S1;
     char *CT;
     char *FT;
     char *TX1;
     char *TX2;
+    char *S2;
     t_map map;
     int counter;
     int pos_x;

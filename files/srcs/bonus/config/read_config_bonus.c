@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 20:29:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 21:03:29 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static void	save_config(char *line)
 		g_config.EA = save_texture(line);
 	if ((position = ft_strnstr(line, "WE", ft_strlen(line))) != NULL)
 		g_config.WE = save_texture(line);
-	if ((position = ft_strnstr(line, "S", ft_strlen(line))) != NULL)
-		g_config.S = save_texture(line);
+	if ((position = ft_strnstr(line, "S1", ft_strlen(line))) != NULL)
+		g_config.S1 = save_texture(line);
+	if ((position = ft_strnstr(line, "S2", ft_strlen(line))) != NULL)
+		g_config.S2 = save_texture(line);
 	if ((position = ft_strnstr(line, "FT", ft_strlen(line))) != NULL)
 	{
 		g_config.FT = save_texture(line);
@@ -58,9 +60,9 @@ int			read_config(char *argv)
 	g_config.counter = -1;
 	if ((fd = open(argv, O_RDONLY)) <= 0)
 		throw_error("FD can't be opened");
-	while (get_next_line(fd, &line) > 0 && g_config.counter < NUM_CONFIG)
+	while (get_next_line(fd, &line) > 0 && g_config.counter < 10)
 		save_config(line);
- 	if (g_config.counter != NUM_CONFIG)
+  	if (g_config.counter != NUM_CONFIG)
 		throw_error("Bad number of elements in configuration");
 	read_map(fd);
 	close(fd);

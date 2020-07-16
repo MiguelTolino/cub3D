@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:40:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 19:01:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 static int rotate_right(t_engine *en)
 {
-	double old_dir_x;
-	double old_plane_x;
-
-	old_dir_x = en->dir.x;
-	en->dir.x = en->dir.x * cos(-en->move_speed) - en->dir.y * sin(-en->rot_speed);
-	en->dir.y = old_dir_x * sin(-en->rot_speed) + en->dir.y * cos(-en->rot_speed);
-	old_plane_x = en->plane.x;
+	en->old_dir_x = en->dir.x;
+	en->dir.x = en->dir.x * cos(-en->rot_speed) - en->dir.y * sin(-en->rot_speed);
+	en->dir.y = en->old_dir_x * sin(-en->rot_speed) + en->dir.y * cos(-en->rot_speed);
+	en->old_plane_x = en->plane.x;
 	en->plane.x = en->plane.x * cos(-en->rot_speed) - en->plane.y * sin(-en->rot_speed);
-	en->plane.y = old_plane_x * sin(-en->rot_speed) + en->plane.y * cos(-en->rot_speed);
+	en->plane.y = en->old_plane_x * sin(-en->rot_speed) + en->plane.y * cos(-en->rot_speed);
 }
 
 static int rotate_left(t_engine *en)
 {
-	double old_dir_x;
-	double old_plane_x;
-
-	old_dir_x = en->dir.x;
+	en->old_dir_x = en->dir.x;
 	en->dir.x = en->dir.x * cos(en->rot_speed) - en->dir.y * sin(en->rot_speed);
-	en->dir.y = old_dir_x * sin(en->rot_speed) + en->dir.y * cos(en->rot_speed);
-	old_plane_x = en->plane.x;
+	en->dir.y = en->old_dir_x * sin(en->rot_speed) + en->dir.y * cos(en->rot_speed);
+	en->old_plane_x = en->plane.x;
 	en->plane.x = en->plane.x * cos(en->rot_speed) - en->plane.y * sin(en->rot_speed);
-	en->plane.y = old_plane_x * sin(en->rot_speed) + en->plane.y * cos(en->rot_speed);
+	en->plane.y = en->old_plane_x * sin(en->rot_speed) + en->plane.y * cos(en->rot_speed);
 }
 
 static int move_foward(t_engine *en)

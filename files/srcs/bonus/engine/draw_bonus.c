@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 17:23:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:07:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		dark_color(double distance, int color)
 		g = c.rgb[1];
 	if (b > c.rgb[2])
 		b = c.rgb[2];
-	color = rgb_int((int)r,(int)g, (int)(b));
-	return (color);
+	c.rgb_int = rgb_int((int)r,(int)g, (int)(b));
+	return (c.rgb_int);
 }
 
 void	draw(t_engine *en, int x)

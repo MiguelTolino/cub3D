@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 14:07:50 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:54:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	dda(t_engine *en)
 
 static void	calc_pixel(t_engine *en)
 {
-	en->draw_start = -en->line_height / 2 + g_config.R.y / 2;
+	en->draw_start = -(en->line_height) / 2 + g_config.R.y / 2;
 	if (en->draw_start < 0)
 		en->draw_start = 0;
 	en->draw_end = en->line_height / 2 + g_config.R.y / 2;
-	if (en->draw_end >= g_config.R.y || en->draw_end <= 0)
+	if (en->draw_end >= g_config.R.y)
 		en->draw_end = g_config.R.y - 1;
 }
 

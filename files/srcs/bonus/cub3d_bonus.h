@@ -175,6 +175,8 @@ typedef struct s_engine
 	t_sprite *sprite;
 	int *sprite_order;
 	double *sprite_distance;
+	double old_dir_x;
+	double old_plane_x;
 
 } t_engine;
 

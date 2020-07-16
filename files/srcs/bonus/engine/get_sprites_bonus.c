@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 17:23:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int choose_texture(t_engine *en, int i, t_vector_int tex)
 	
 	if (en->sprite[i].num == 2)
 		color = en->mlx.texture[6].data[en->mlx.texture[6].width * tex.y + tex.x];
+	//return (dark_color(en, color));
 	return (color);
 }
 
@@ -81,7 +82,7 @@ static void			put_sprite_to_image(t_engine *en, t_sprite_cast s, int stripe, int
 			tex.y = ((d * 64) / s.sprite_height) / 256;
 			en->color = choose_texture(en, i, tex);
 			if (en->color != en->mlx.texture[6].data[0])
-				*(en->mlx.img.data + (y * g_config.R.x) + stripe) = en->color;
+				*(en->mlx.img.data + (y * g_config.R.x) + stripe) = dark_color(en->sprite_distance[i], en->color);
 			y++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 21:05:22 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/15 18:16:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:30:38 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,16 @@ char		*rgb2hex(int r, int g, int b)
 
 int			rgb_int(int r, int g, int b)
 {
-	if (r > 255 || b > 255 || g > 255 || b < 0 || g < 0 || r < 0)
-		throw_error("Error: RGB Color is wrong");
+	if (r > 255 || b > 255 || g > 255)
+	{
+		r = 255;
+		b = 255;
+		g = 255;
+	}
+	if (b < 0 || g < 0 || r < 0)
+	{
+		return (0);
+	}
 	return (65536 * r + 256 * g + b);
 }
 

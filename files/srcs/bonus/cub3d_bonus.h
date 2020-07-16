@@ -202,5 +202,6 @@ int sprite_casting(t_engine *en);
 void sort_sprites_bubble(t_engine *en);
 void sprite_test(t_engine *en);
 void save_bmp(t_engine *en);
+int	dark_color(double distance, int color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 20:44:15 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 17:17:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void		floor_casting(t_engine *en)
 			en->cf.floor.x += en->cf.floor_step.x;
 			en->cf.floor.y += en->cf.floor_step.y;
 			en->color = (int)en->mlx.texture[5].data[(int)(en->mlx.texture[5].width * en->cf.t.y + en->cf.t.x)];
+			en->color = dark_color(en->cf.row_distance, en->color);
 			*(en->mlx.img.data + (y * g_config.R.x) + x) = en->color;
 			en->color = (int)en->mlx.texture[4].data[(int)(en->mlx.texture[4].width * en->cf.t.y + en->cf.t.x)];
+			en->color = dark_color(en->cf.row_distance, en->color);
 			*(en->mlx.img.data + ((g_config.R.y - y - 1) * g_config.R.x) + x) = en->color;
 			x++;
 		}

@@ -24,7 +24,7 @@
 #define MAX_HEIGHT 1080
 #define MIN_WIDTH 320
 #define MIN_HEIGHT 200
-#define NUM_CONFIG 8
+#define NUM_CONFIG 10
 
 typedef struct s_resolution
 {
@@ -59,6 +59,8 @@ typedef struct s_config
     char *S;
     char *CT;
     char *FT;
+    char *TX1;
+    char *TX2;
     t_map map;
     int counter;
     int pos_x;

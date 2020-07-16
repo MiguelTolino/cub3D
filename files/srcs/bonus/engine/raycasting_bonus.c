@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 18:54:43 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 19:47:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static void	dda(t_engine *en)
 			en->map_y += en->step_y;
 			en->side = 1;
 		}
-		if (g_config.map.world_map[en->map_x][en->map_y] == '1')
+		if (g_config.map.world_map[en->map_x][en->map_y] == '1' ||
+		g_config.map.world_map[en->map_x][en->map_y] == '3' ||
+		g_config.map.world_map[en->map_x][en->map_y] == '4')
 			en->hit = 1;
 	}
 	if (en->side == 0)

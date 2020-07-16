@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 20:44:15 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 17:17:41 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 19:54:31 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ static int	get_side(t_engine *en)
 		num = 2;
 	if (en->ray_dir.y > 0 && en->side == 1)
 		num = 3;
+	if (g_config.map.world_map[en->map_x][en->map_y] == '3')
+		num = 7;
+	if (g_config.map.world_map[en->map_x][en->map_y] == '4')
+		num = 8;
 	return (num);
 }
 

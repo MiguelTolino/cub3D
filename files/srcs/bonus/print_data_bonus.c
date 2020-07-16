@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:34:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 18:14:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/16 20:05:39 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void print_data(t_engine en)
 	printf("S: %s\n", g_config.S);
 	printf("CT: %s\n", g_config.CT);
 	printf("FT: %s\n", g_config.FT);
+	printf("TX1: %s\n", g_config.TX1);
+	printf("TX2: %s\n", g_config.TX2);
 
 	printf("PosX: %i\n", g_config.pos_x);
 	printf("PosY: %i\n", g_config.pos_y);

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 19:53:08 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 21:03:29 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 23:13:40 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ int			read_config(char *argv)
 	if ((fd = open(argv, O_RDONLY)) <= 0)
 		throw_error("FD can't be opened");
 	while (get_next_line(fd, &line) > 0 && g_config.counter < 10)
+	{
 		save_config(line);
+		free(line);
+	}
   	if (g_config.counter != NUM_CONFIG)
 		throw_error("Bad number of elements in configuration");
 	read_map(fd);
+	free(line);
 	close(fd);
 	return (1);
 }

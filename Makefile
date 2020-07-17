@@ -47,7 +47,7 @@ GNL:= files/lib/get_next_line/
 all:	libft minilibx $(NAME) msg
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) -g $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
 
 bonus: libft minilibx $(OBJS_BONUS) 
 	$(CC) $(OBJS_BONUS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 

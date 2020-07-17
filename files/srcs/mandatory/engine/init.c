@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 14:17:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 19:50:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_img	*init_texture(t_engine *en)
 {
 	t_img		*texture;
 
-	texture = malloc(sizeof(t_img) * 7);
+	texture = malloc(sizeof(t_img) * 5);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture[0].width, &texture[0].height)))
@@ -67,14 +67,19 @@ static t_img	*init_texture(t_engine *en)
 	if (!(texture[3].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
-	if (!(texture[6].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S, &texture[6].width, &texture[6].height)))
+	if (!(texture[4].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S, &texture[4].width, &texture[4].height)))
 		throw_error("Sprite texture can't be opened");
 	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr, &texture[0].bpp, &texture[0].size_line, &texture[0].endian);
 	texture[1].data = (int*)mlx_get_data_addr(texture[1].ptr, &texture[1].bpp, &texture[1].size_line, &texture[1].endian);
 	texture[2].data = (int*)mlx_get_data_addr(texture[2].ptr, &texture[2].bpp, &texture[2].size_line, &texture[2].endian);
 	texture[3].data = (int*)mlx_get_data_addr(texture[3].ptr, &texture[3].bpp, &texture[3].size_line, &texture[3].endian);
-	texture[6].data = (int*)mlx_get_data_addr(texture[6].ptr, &texture[6].bpp, &texture[6].size_line, &texture[6].endian);
+	texture[4].data = (int*)mlx_get_data_addr(texture[4].ptr, &texture[4].bpp, &texture[4].size_line, &texture[4].endian);
+	free(g_config.NO);
+	free(g_config.SO);
+	free(g_config.WE);
+	free(g_config.EA);
+	free(g_config.S);
 	return (texture);
 }
 

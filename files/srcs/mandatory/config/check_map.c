@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:26:36 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 20:47:16 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void		fill_map(char **map)
 	ssize_t		len;
 	char		padding;
 	char		*aux;
+	char 		*pad;
 
 	i = 0;
 	padding = ' ';
@@ -26,9 +27,11 @@ static void		fill_map(char **map)
 		len = g_config.map.n_col - ft_strlen(map[i]);
 		if (len)
 		{
-			aux = ft_strjoin(map[i], pad_right(padding, len));
+			pad = pad_right(padding, len);
+			aux = ft_strjoin(map[i], pad);
 			free(map[i]);
 			map[i] = aux;
+			free(pad);
 		}
 		i++;
 	}
@@ -66,13 +69,11 @@ char			**parse_map()
 	}
 	aux = copy_matrix(g_config.map.n_row, map);
 	if (!check_map(aux, i, j))
-	{
-		//FIXME free_str(aux); Liberar AUX
-		return (map);
-	}
+		i = -1;
 	else
 		throw_error("Map is not closed");
-	return (0);
+	free_str(aux);
+	return (map);
 }
 
 int			check_map(char **map, int row, int col)

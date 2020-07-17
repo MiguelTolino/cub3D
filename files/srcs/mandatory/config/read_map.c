@@ -6,22 +6,30 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/15 13:27:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 20:24:02 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
 
-int			is_map(char *line) //TODO Considerate another number for bonus
+int			is_map(char *line)
 {
 	unsigned int i;
+	unsigned int position;
 
 	i = 0;
+	position = 0;
 	if (!*line)
 		return (0);
 	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0'
 	|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+	{
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+			position++;
 		i++;
+	}
+	if (position > 1)
+		throw_error("Wrong number of Initial Positions");
 	if (i == ft_strlen(line))
 		return (1);
 	else
@@ -58,6 +66,9 @@ void		read_map(int fd)
 		}
 		if (!end)
 			break ;
+		free(line);
 	}
+	free(line);
 	g_config.map.world_map = parse_map();
+	free(g_config.map.buff);
 }

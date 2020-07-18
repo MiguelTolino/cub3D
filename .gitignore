@@ -2,3 +2,4 @@
 .vscode
 files/**/*.[o]
 .Makefile.swp
+cub3D_map_tester/

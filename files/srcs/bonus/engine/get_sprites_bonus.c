@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 13:57:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 18:16:06 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,28 @@
 #define UDIV 1
 #define VDIV 1
 #define VMOVE 128.0
+#define SPRITE_DISTANCE 3
 
 static int			choose_texture(t_engine *en, int i, t_vector_int tex)
 {
 	int color;
 
 	if (en->sprite[i].num == 2)
-		color = en->mlx.texture[6].data[en->mlx.texture[6].width *
+	{	color = en->mlx.texture[6].data[en->mlx.texture[6].width *
 		tex.y + tex.x];
+		if (en->sprite_distance[i] < SPRITE_DISTANCE - 2)
+			exit_game(en);
+	}
 	if (en->sprite[i].num == 5)
+	{
 		color = en->mlx.texture[9].data[en->mlx.texture[9].width *
 		tex.y + tex.x];
+		if (en->sprite_distance[i] < SPRITE_DISTANCE)
+		{
+			en->pos.x = g_config.pos_x + 0.5;
+			en->pos.y = g_config.pos_y + 0.5;
+		}
+	}
 	return (color);
 }
 

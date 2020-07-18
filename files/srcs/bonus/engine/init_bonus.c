@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/16 21:05:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 02:40:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,25 @@ static t_img	*init_texture(t_engine *en)
 	texture = malloc(sizeof(t_img) * 10);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture[0].width, &texture[0].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.no, &texture[0].width, &texture[0].height)))
 		throw_error("North texture can't be opened");
 	if (!(texture[1].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.SO, &texture[1].width, &texture[1].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.so, &texture[1].width, &texture[1].height)))
 		throw_error("South texture can't be opened");
 	if (!(texture[2].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.EA, &texture[2].width, &texture[2].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.ea, &texture[2].width, &texture[2].height)))
 		throw_error("East texture can't be opened");
 	if (!(texture[3].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.we, &texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
 	if (!(texture[4].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.CT, &texture[4].width, &texture[4].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.cT, &texture[4].width, &texture[4].height)))
 		throw_error("Ceiling texture can't be opened");
 	if (!(texture[5].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.FT, &texture[5].width, &texture[5].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.fT, &texture[5].width, &texture[5].height)))
 		throw_error("Floor texture can't be opened");
 	if (!(texture[6].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S1, &texture[6].width, &texture[6].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s1, &texture[6].width, &texture[6].height)))
 		throw_error("Sprite texture can't be opened");
 	if (!(texture[7].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.TX1, &texture[7].width, &texture[7].height)))
@@ -84,7 +84,7 @@ static t_img	*init_texture(t_engine *en)
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.TX2, &texture[8].width, &texture[8].height)))
 		throw_error("TX2 texture can't be opened");
 	if (!(texture[9].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S2, &texture[9].width, &texture[9].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s2, &texture[9].width, &texture[9].height)))
 		throw_error("Sprite texture can't be opened");
 	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr, &texture[0].bpp, &texture[0].size_line, &texture[0].endian);
 	texture[1].data = (int*)mlx_get_data_addr(texture[1].ptr, &texture[1].bpp, &texture[1].size_line, &texture[1].endian);
@@ -132,7 +132,7 @@ static void init_sprites(t_engine *en)
 {
 	en->num_sprites = get_num_sprites();
 	en->sprite = set_sprites(en->num_sprites);
-	en->z_buff = malloc(sizeof(double) * g_config.R.x);
+	en->z_buff = malloc(sizeof(double) * g_config.r.x);
 	en->sprite_order = malloc(sizeof(int) * en->num_sprites);
 	en->sprite_distance = malloc(sizeof(double) * en->num_sprites);
 }

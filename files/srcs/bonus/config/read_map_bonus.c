@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/17 23:20:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/17 23:34:46 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config_bonus.h"
 
-int			is_map(char *line) //TODO Considerate another number for bonus
+int			is_map(char *line)
 {
 	unsigned int i;
 	unsigned int position;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/14 19:55:14 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 01:46:45 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 02:39:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ static void	dda(t_engine *en)
 	else
 		en->perp_wall_dist = (en->map_y - en->pos.y + (1 - en->step_y) / 2)
 		/ en->ray_dir.y;
-	en->line_height = (int)(g_config.R.y / en->perp_wall_dist);
+	en->line_height = (int)(g_config.r.y / en->perp_wall_dist);
 }
 
 static void	calc_pixel(t_engine *en)
 {
-	en->draw_start = -en->line_height / 2 + g_config.R.y / 2;
+	en->draw_start = -en->line_height / 2 + g_config.r.y / 2;
 	if (en->draw_start < 0)
 		en->draw_start = 0;
-	en->draw_end = en->line_height / 2 + g_config.R.y / 2;
-	if (en->draw_end >= g_config.R.y || en->draw_end <= 0)
-		en->draw_end = g_config.R.y - 1;
+	en->draw_end = en->line_height / 2 + g_config.r.y / 2;
+	if (en->draw_end >= g_config.r.y || en->draw_end <= 0)
+		en->draw_end = g_config.r.y - 1;
 }
 
 static void	steps_initial_dist(t_engine *en)
@@ -76,7 +76,7 @@ static void	steps_initial_dist(t_engine *en)
 
 static void	init_calc(t_engine *en, int x)
 {
-	en->camera.x = 2 * x / (double)g_config.R.x - 1;
+	en->camera.x = 2 * x / (double)g_config.r.x - 1;
 	en->ray_dir.x = en->dir.x + en->plane.x * en->camera.x;
 	en->ray_dir.y = en->dir.y + en->plane.y * en->camera.x;
 	en->map_x = (int)en->pos.x;
@@ -91,7 +91,7 @@ int			raycasting(t_engine *en)
 	int x;
 
 	x = 0;
-	while (x < g_config.R.x)
+	while (x < g_config.r.x)
 	{
 		init_calc(en, x);
 		steps_initial_dist(en);

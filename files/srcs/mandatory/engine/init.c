@@ -3,87 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 23:42:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/17 19:50:04 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 01:44:39 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 02:40:27 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static int	orientation(t_engine *en)
+static t_img			*init_texture(t_engine *en)
 {
-	char	dir;
-
-	dir = g_config.map.world_map[g_config.pos_x][g_config.pos_y];
-	g_config.map.world_map[g_config.pos_x][g_config.pos_y] = '0';
-	if (dir == 'N')
-	{
-		en->dir.x = -1;
-		en->dir.y = 0;
-		en->plane.x = 0;
-		en->plane.y = 0.66;
-	}
-	if (dir == 'S')
-	{
-		en->dir.x = 1;
-		en->dir.y = 0;
-		en->plane.x = 0;
-		en->plane.y = -0.66;
-	}
-	if (dir == 'W')
-	{
-		en->dir.x = 0;
-		en->dir.y = -1;
-		en->plane.x = -0.66;
-		en->plane.y = 0;
-	}
-	if (dir == 'E')
-	{
-		en->dir.x = 0;
-		en->dir.y = 1;
-		en->plane.x = 0.66;
-		en->plane.y = 0;
-	}
-	return (0);
-}
-
-static t_img	*init_texture(t_engine *en)
-{
-	t_img		*texture;
+	t_img			*texture;
 
 	texture = malloc(sizeof(t_img) * 5);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.NO, &texture[0].width, &texture[0].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.no,
+		&texture[0].width, &texture[0].height)))
 		throw_error("North texture can't be opened");
 	if (!(texture[1].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.SO, &texture[1].width, &texture[1].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.so,
+		&texture[1].width, &texture[1].height)))
 		throw_error("South texture can't be opened");
 	if (!(texture[2].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.EA, &texture[2].width, &texture[2].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.ea,
+		&texture[2].width, &texture[2].height)))
 		throw_error("East texture can't be opened");
 	if (!(texture[3].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.WE, &texture[3].width, &texture[3].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.we,
+		&texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
 	if (!(texture[4].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.S, &texture[4].width, &texture[4].height)))
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s,
+		&texture[4].width, &texture[4].height)))
 		throw_error("Sprite texture can't be opened");
-	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr, &texture[0].bpp, &texture[0].size_line, &texture[0].endian);
-	texture[1].data = (int*)mlx_get_data_addr(texture[1].ptr, &texture[1].bpp, &texture[1].size_line, &texture[1].endian);
-	texture[2].data = (int*)mlx_get_data_addr(texture[2].ptr, &texture[2].bpp, &texture[2].size_line, &texture[2].endian);
-	texture[3].data = (int*)mlx_get_data_addr(texture[3].ptr, &texture[3].bpp, &texture[3].size_line, &texture[3].endian);
-	texture[4].data = (int*)mlx_get_data_addr(texture[4].ptr, &texture[4].bpp, &texture[4].size_line, &texture[4].endian);
-	free(g_config.NO);
-	free(g_config.SO);
-	free(g_config.WE);
-	free(g_config.EA);
-	free(g_config.S);
 	return (texture);
 }
 
-static t_key_buff	init_key_buff(void)
+static t_key_buff		init_key_buff(void)
 {
 	t_key_buff buff;
 
@@ -98,21 +56,22 @@ static t_key_buff	init_key_buff(void)
 	return (buff);
 }
 
-static void init_sprites(t_engine *en)
+static void				init_sprites(t_engine *en)
 {
 	en->num_sprites = get_num_sprites();
 	en->sprite = set_sprites(en->num_sprites);
-	en->z_buff = malloc(sizeof(double) * g_config.R.x);
+	en->z_buff = malloc(sizeof(double) * g_config.r.x);
 	en->sprite_order = malloc(sizeof(int) * en->num_sprites);
 	en->sprite_distance = malloc(sizeof(double) * en->num_sprites);
 }
 
-void init(t_engine *en)
+void					init(t_engine *en)
 {
 	en->pos.x = g_config.pos_x + 0.5;
 	en->pos.y = g_config.pos_y + 0.5;
 	orientation(en);
 	en->k_buff = init_key_buff();
 	en->mlx.texture = init_texture(en);
+	open_textures(en);
 	init_sprites(en);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_bmp.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/14 11:34:09 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/15 13:30:15 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 01:45:37 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 02:39:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 #define DPI 100
 #define BMP_HEADER_SIZE 54
 
-static t_bmp	init_bmp()
+static t_bmp	init_bmp(void)
 {
-	t_bmp bmp;
-	int ppm;
+	t_bmp	bmp;
+	int		ppm;
 
 	ppm = 40 * DPI;
 	bmp.type[0] = 'B';
 	bmp.type[1] = 'M';
-	bmp.file_size = (4 + 54) * g_config.R.x * g_config.R.y;
+	bmp.file_size = (4 + 54) * g_config.r.x * g_config.r.y;
 	bmp.reserved = 0;
 	bmp.offset = 14;
 	bmp.size_header = 40;
-	bmp.width = g_config.R.x;
-	bmp.height = g_config.R.y;
+	bmp.width = g_config.r.x;
+	bmp.height = g_config.r.y;
 	bmp.planes = 1;
 	bmp.bit_count = 32;
 	bmp.compression = 0;
@@ -60,11 +60,11 @@ static void		write_bmp(int fd, t_bmp bmp)
 
 void			save_bmp(t_engine *en)
 {
-	int fd;
-	int x;
-	int y;
-	t_bmp bmp;
-	int color;
+	int		fd;
+	int		x;
+	int		y;
+	t_bmp	bmp;
+	int		color;
 
 	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT, S_IRWXU |
 	O_TRUNC | O_APPEND)))
@@ -72,13 +72,13 @@ void			save_bmp(t_engine *en)
 	bmp = init_bmp();
 	write_bmp(fd, bmp);
 	y = 0;
-	while (y < g_config.R.y)
+	while (y < g_config.r.y)
 	{
 		x = 0;
-		while (x < g_config.R.x)
+		while (x < g_config.r.x)
 		{
-			color = *(en->mlx.img.data + (g_config.R.y - y - 1) *
-			g_config.R.x + x);
+			color = *(en->mlx.img.data + (g_config.r.y - y - 1) *
+			g_config.r.x + x);
 			write(fd, &color, 4);
 			x++;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/17 01:27:36 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 02:39:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	draw(t_engine *en, int x)
 		en->tex.pos += en->tex.step;
 		en->color = en->mlx.texture[en->tex.num].data[en->mlx.texture[en->tex.num].height * en->tex.y + en->tex.x];
 		en->color = dark_color(en->perp_wall_dist, en->color);
-		*(en->mlx.img.data + (i * g_config.R.x) + x) = en->color;
+		*(en->mlx.img.data + (i * g_config.r.x) + x) = en->color;
 		i++;
 	}
 }

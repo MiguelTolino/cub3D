@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_attributes_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/02 00:44:15 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/15 18:16:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 02:40:27 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

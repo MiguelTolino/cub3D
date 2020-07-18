@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/12 09:10:06 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/17 20:24:02 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 01:10:59 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 01:20:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int			is_map(char *line)
 	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0'
 	|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 	{
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' ||
+		line[i] == 'W')
 			position++;
 		i++;
 	}
@@ -34,6 +35,26 @@ int			is_map(char *line)
 		return (1);
 	else
 		return (0);
+}
+
+static void	calculate_map(char *line, char *aux, int c_len, int end)
+{
+	if (is_map(line))
+	{
+		aux = ft_strjoin(g_config.map.buff, line);
+		free(g_config.map.buff);
+		g_config.map.buff = aux;
+		if (end)
+		{
+			aux = ft_strjoin(g_config.map.buff, "\n");
+			free(g_config.map.buff);
+			g_config.map.buff = aux;
+		}
+		g_config.map.n_row++;
+		c_len = ft_strlen(line);
+		if (c_len > g_config.map.n_col)
+			g_config.map.n_col = c_len;
+	}
 }
 
 void		read_map(int fd)
@@ -48,22 +69,7 @@ void		read_map(int fd)
 	g_config.map.buff = ft_strdup("");
 	while ((end = get_next_line(fd, &line)) >= 0)
 	{
-		if (is_map(line))
-		{
-			aux = ft_strjoin(g_config.map.buff, line);
-			free(g_config.map.buff);
-			g_config.map.buff = aux;
-			if (end)
-			{
-				aux = ft_strjoin(g_config.map.buff, "\n");
-				free(g_config.map.buff);
-				g_config.map.buff = aux;
-			}
-			g_config.map.n_row++;
-			c_len = ft_strlen(line);
-			if (c_len > g_config.map.n_col)
-				g_config.map.n_col = c_len;
-		}
+		calculate_map(line, aux, c_len, end);
 		if (!end)
 			break ;
 		free(line);

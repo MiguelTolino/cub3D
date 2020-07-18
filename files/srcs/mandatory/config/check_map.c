@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/11 18:58:31 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/17 20:47:16 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 01:10:05 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 02:43:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		fill_map(char **map)
 	ssize_t		len;
 	char		padding;
 	char		*aux;
-	char 		*pad;
+	char		*pad;
 
 	i = 0;
 	padding = ' ';
@@ -37,18 +37,14 @@ static void		fill_map(char **map)
 	}
 }
 
-char			**parse_map()
+static void		locate_position(char **map)
 {
-	char		**map;
-	int			i;
-	int			j;
-	int			trigger;
-	char		**aux;
+	int i;
+	int j;
+	int trigger;
 
-	trigger = 0;
-	map = ft_split(g_config.map.buff, '\n');
-	fill_map(map);
 	i = 0;
+	trigger = 0;
 	while (i < g_config.map.n_row)
 	{
 		j = 0;
@@ -67,16 +63,9 @@ char			**parse_map()
 			break ;
 		i++;
 	}
-	aux = copy_matrix(g_config.map.n_row, map);
-	if (!check_map(aux, i, j))
-		i = -1;
-	else
-		throw_error("Map is not closed");
-	free_str(aux);
-	return (map);
 }
 
-int			check_map(char **map, int row, int col)
+int				check_map(char **map, int row, int col)
 {
 	char		c;
 	int			ok;
@@ -95,4 +84,19 @@ int			check_map(char **map, int row, int col)
 	ok = ok == 0 ? check_map(map, row - 1, col) : ok;
 	ok = ok == 0 ? check_map(map, row + 1, col) : ok;
 	return (ok);
+}
+
+char			**parse_map(void)
+{
+	char		**map;
+	char		**aux;
+
+	map = ft_split(g_config.map.buff, '\n');
+	fill_map(map);
+	locate_position(map);
+	aux = copy_matrix(g_config.map.n_row, map);
+	if (check_map(aux, g_config.pos_x, g_config.pos_y))
+		throw_error("Map is not closed");
+	free_str(aux);
+	return (map);
 }

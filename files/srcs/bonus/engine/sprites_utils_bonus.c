@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 13:37:19 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/17 01:30:43 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 13:24:39 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 13:26:09 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int				get_num_sprites(void)
 		j = 0;
 		while (j < g_config.map.n_col)
 		{
-			if (g_config.map.world_map[i][j] == '2' || g_config.map.world_map[i][j] == '5')
+			if (g_config.map.world_map[i][j] == '2' ||
+			g_config.map.world_map[i][j] == '5')
 			{
 				num++;
 			}
@@ -51,12 +52,12 @@ t_sprite		*set_sprites(int num)
 		j = 0;
 		while (j < g_config.map.n_col)
 		{
-			if (g_config.map.world_map[i][j] == '2' ||  g_config.map.world_map[i][j] == '5')
+			if (g_config.map.world_map[i][j] == '2' ||
+			g_config.map.world_map[i][j] == '5')
 			{
 				sprites[cont].num = g_config.map.world_map[i][j] - '0';
 				sprites[cont].x = i + 0.6;
-				sprites[cont].y = j + 0.6;
-				cont++;
+				sprites[cont++].y = j + 0.6;
 			}
 			j++;
 		}
@@ -65,7 +66,7 @@ t_sprite		*set_sprites(int num)
 	return (sprites);
 }
 
-void	sort_sprites_bubble(t_engine *en)
+void			sort_sprites_bubble(t_engine *en)
 {
 	int			i;
 	double		dist_swap;

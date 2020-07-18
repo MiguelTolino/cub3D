@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:10:59 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 01:20:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 12:00:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,13 @@
 int			is_map(char *line)
 {
 	unsigned int i;
-	unsigned int position;
 
 	i = 0;
-	position = 0;
 	if (!*line)
 		return (0);
 	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0'
 	|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-	{
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' ||
-		line[i] == 'W')
-			position++;
 		i++;
-	}
-	if (position > 1)
-		throw_error("Wrong number of Initial Positions");
 	if (i == ft_strlen(line))
 		return (1);
 	else

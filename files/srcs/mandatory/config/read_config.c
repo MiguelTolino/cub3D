@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:10:26 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:41:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 13:17:20 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,32 @@
 
 static void		save_textures(char *line, int limit, char *position)
 {
-	if ((position = ft_strnstr(line, "NO", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "NO", ft_strlen(line))) != NULL &&
+	!limit && *(position + 2) == ' ')
 	{
 		g_config.no = save_texture(line);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "SO", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "SO", ft_strlen(line))) != NULL &&
+	!limit && *(position + 2) == ' ')
 	{
 		g_config.so = save_texture(line);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "EA", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "EA", ft_strlen(line))) != NULL &&
+	!limit && *(position + 2) == ' ')
 	{
 		g_config.ea = save_texture(line);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "WE", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "WE", ft_strlen(line))) != NULL &&
+	!limit && *(position + 2) == ' ')
 	{
 		g_config.we = save_texture(line);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "S", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "S", ft_strlen(line))) != NULL &&
+	!limit && *(position + 1) == ' ')
 	{
 		g_config.s = save_texture(line);
 		limit = 1;
@@ -48,17 +53,20 @@ static void		save_config(char *line)
 
 	position = NULL;
 	limit = 0;
-	if ((position = ft_strnstr(line, "R", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "R", ft_strlen(line))) != NULL && !limit &&
+	*(position + 1) == ' ')
 	{
 		g_config.r = save_resolution(line);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "F", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "F", ft_strlen(line))) != NULL && !limit &&
+	*(position + 1) == ' ')
 	{
 		g_config.f = save_color(line, position);
 		limit = 1;
 	}
-	if ((position = ft_strnstr(line, "C", ft_strlen(line))) != NULL && !limit)
+	if ((position = ft_strnstr(line, "C", ft_strlen(line))) != NULL && !limit &&
+	*(position + 1) == ' ')
 	{
 		g_config.c = save_color(line, position);
 		limit = 1;

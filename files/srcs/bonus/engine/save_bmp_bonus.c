@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 11:34:09 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:39:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 13:27:01 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 static t_bmp	init_bmp(t_engine *en)
 {
-	t_bmp bmp;
-	int ppm;
+	t_bmp	bmp;
+	int		ppm;
 
 	ppm = 40 * DPI;
 	bmp.type[0] = 'B';
@@ -60,11 +60,11 @@ static void		write_bmp(int fd, t_bmp bmp)
 
 void			save_bmp(t_engine *en)
 {
-	int fd;
-	int x;
-	int y;
-	t_bmp bmp;
-	int color;
+	int		fd;
+	int		x;
+	int		y;
+	t_bmp	bmp;
+	int		color;
 
 	if (!(fd = open("cub3D.bmp", O_WRONLY | O_CREAT, S_IRWXU |
 	O_TRUNC | O_APPEND)))

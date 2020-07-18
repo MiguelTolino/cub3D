@@ -6,27 +6,27 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:39:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 13:22:09 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 #define DARKNESS 2
 
-int		dark_color(double distance, int color)
+int				dark_color(double distance, int color)
 {
-	t_color c;
-	double dark;
-	int r;
-	int g;
-	int b;
+	t_color		c;
+	double		dark;
+	int			r;
+	int			g;
+	int			b;
 
 	dark = (DARKNESS / distance);
 	if (!dark)
 		dark = 1;
 	c.rgb[0] = (color >> 16) & 255;
 	c.rgb[1] = (color >> 8) & 255;
-	c.rgb[2] =  color & 255;
+	c.rgb[2] = color & 255;
 	r = (int)(c.rgb[0] * dark);
 	g = (int)(c.rgb[1] * dark);
 	b = (int)(c.rgb[2] * dark);
@@ -36,20 +36,23 @@ int		dark_color(double distance, int color)
 		g = c.rgb[1];
 	if (b > c.rgb[2])
 		b = c.rgb[2];
-	c.rgb_int = rgb_int((int)r,(int)g, (int)(b));
+	c.rgb_int = rgb_int((int)r, (int)g, (int)(b));
 	return (c.rgb_int);
 }
 
-void	draw(t_engine *en, int x)
+void			draw(t_engine *en, int x)
 {
 	int i;
 
 	i = en->draw_start;
 	while (i < en->draw_end)
 	{
-		en->tex.y = (int)en->tex.pos & (en->mlx.texture[en->tex.num].height - 1);
+		en->tex.y = (int)en->tex.pos &
+		(en->mlx.texture[en->tex.num].height - 1);
 		en->tex.pos += en->tex.step;
-		en->color = en->mlx.texture[en->tex.num].data[en->mlx.texture[en->tex.num].height * en->tex.y + en->tex.x];
+		en->color = en->mlx.texture[en->tex.num].data
+		[en->mlx.texture[en->tex.num].height
+		* en->tex.y + en->tex.x];
 		en->color = dark_color(en->perp_wall_dist, en->color);
 		*(en->mlx.img.data + (i * g_config.r.x) + x) = en->color;
 		i++;

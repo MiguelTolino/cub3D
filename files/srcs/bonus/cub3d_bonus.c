@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 16:02:25 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/17 23:04:09 by mmateo-t         ###   ########.fr       */
+/*   Created: 2020/07/18 12:16:45 by mmateo-t          #+#    #+#             */
+/*   Updated: 2020/07/18 12:16:56 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		main(int argc, char **argv)
 	create_window(&en);
 	init(&en);
 	gameloop(&en);
-	//print_data(en);
 	hooks(en);
 	return (0);
 }

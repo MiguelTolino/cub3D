@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:10:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:43:14 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 11:54:45 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ static void		locate_position(char **map)
 				trigger++;
 				g_config.pos_x = i;
 				g_config.pos_y = j;
-				break ;
 			}
 			j++;
 		}
-		if (trigger)
-			break ;
 		i++;
 	}
+	if (trigger != 1)
+		throw_error("Wrong number of positions");
 }
 
 int				check_map(char **map, int row, int col)

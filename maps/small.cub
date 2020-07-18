@@ -1,11 +1,10 @@
 R 860 480
-NO ./textures/Bricks.xpm
-SO ./textures/Bricks.xpm
-WE ./textures/Wood.xpm
-EA ./textures/Wood.xpm
+NO ./files/images/textures/tile234.xpm
+SO ./files/images/textures/tile234.xpm
+WE ./files/images/textures/tile234.xpm
+EA ./files/images/textures/tile234.xpm
 
-S ./textures/Sprites/barrel.xpm
-
+S ./files/images/sprites/slugma.xpm
 F 10, 10, 100
 C 152, 98, 27
 

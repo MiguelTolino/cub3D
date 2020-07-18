@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 13:57:17 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:39:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 13:27:44 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static void	dda(t_engine *en)
 	else
 		en->perp_wall_dist = (en->map_y - en->pos.y + (1 - en->step_y) / 2)
 		/ en->ray_dir.y;
-	en->line_height = (int)(g_config.r.y / en->perp_wall_dist);
 }
 
 static void	calc_pixel(t_engine *en)
 {
+	en->line_height = (int)(g_config.r.y / en->perp_wall_dist);
 	en->draw_start = -(en->line_height) / 2 + g_config.r.y / 2;
 	if (en->draw_start < 0)
 		en->draw_start = 0;

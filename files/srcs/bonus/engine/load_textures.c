@@ -6,12 +6,14 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 13:46:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/19 03:51:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 23:47:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-#define IMG "./files/images/comun/hand1.xpm"
+#define HAND "./files/images/hand1.xpm"
+#define HEALTH "./files/images/textures/health.xpm"
+#define SKYBOX "./files/images/comun/luna.xpm"
 
 void			load_textures(t_engine *en, t_img *texture)
 {
@@ -35,11 +37,35 @@ void			load_textures(t_engine *en, t_img *texture)
 	&texture[8].bpp, &texture[8].size_line, &texture[8].endian);
 	texture[9].data = (int*)mlx_get_data_addr(texture[9].ptr,
 	&texture[9].bpp, &texture[9].size_line, &texture[9].endian);
-	texture[10].data = (int*)mlx_get_data_addr(texture[10].ptr,
-	&texture[10].bpp, &texture[10].size_line, &texture[10].endian);
+	texture[13].data = (int*)mlx_get_data_addr(texture[13].ptr,
+	&texture[13].bpp, &texture[13].size_line, &texture[13].endian);
 }
 
-static void		more_textures(t_engine *en, t_img *texture)
+static void		more_textures2(t_engine *en, t_img *texture)
+{
+	if (!(texture[8].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.tx2,
+		&texture[8].width, &texture[8].height)))
+		throw_error("TX2 texture can't be opened");
+	if (!(texture[9].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s2,
+		&texture[9].width, &texture[9].height)))
+		throw_error("Sprite texture can't be opened");
+	if (!(texture[10].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, HAND,
+		&texture[10].width, &texture[10].height)))
+		throw_error("Hand can't be opened");
+	if (!(texture[11].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, HEALTH,
+		&texture[11].width, &texture[11].height)))
+		throw_error("Life bar can't be opened");
+	if (!(texture[13].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, SKYBOX,
+		&texture[13].width, &texture[13].height)))
+		throw_error("Skybox can't be opened");
+}
+
+static void		more_textures1(t_engine *en, t_img *texture)
 {
 	if (!(texture[4].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.ct,
@@ -57,25 +83,14 @@ static void		more_textures(t_engine *en, t_img *texture)
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.tx1,
 		&texture[7].width, &texture[7].height)))
 		throw_error("TX1 texture can't be opened");
-	if (!(texture[8].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.tx2,
-		&texture[8].width, &texture[8].height)))
-		throw_error("TX2 texture can't be opened");
-	if (!(texture[9].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s2,
-		&texture[9].width, &texture[9].height)))
-		throw_error("Sprite texture can't be opened");
-	if (!(texture[10].ptr =
-		mlx_xpm_file_to_image(en->mlx.ptr, IMG,
-		&texture[10].width, &texture[10].height)))
-		throw_error("Sprite texture can't be opened");
+	more_textures2(en, texture);
 }
 
 t_img			*init_texture(t_engine *en)
 {
 	t_img		*texture;
 
-	texture = malloc(sizeof(t_img) * 11);
+	texture = malloc(sizeof(t_img) * 14);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.no,
@@ -93,7 +108,7 @@ t_img			*init_texture(t_engine *en)
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.we,
 		&texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
-	more_textures(en, texture);
+	more_textures1(en, texture);
 	load_textures(en, texture);
 	return (texture);
 }

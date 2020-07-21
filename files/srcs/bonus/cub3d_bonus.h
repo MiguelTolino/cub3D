@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 12:26:52 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/19 01:25:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 19:54:21 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,5 +209,7 @@ int					move_foward(t_engine *en);
 int					move_backward(t_engine *en);
 int					move_left(t_engine *en);
 int					move_right(t_engine *en);
+void				destroy_create_image(t_engine *en);
+void				draw_skybox(t_engine *en);
 
 #endif

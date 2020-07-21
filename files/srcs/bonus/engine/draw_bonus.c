@@ -6,12 +6,31 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:34:05 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/19 02:29:01 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 21:57:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-#define DARKNESS 2
+#define DARKNESS 1
+
+void			draw_skybox(t_engine *en)
+{
+	int x;
+	int y;
+	int color;
+
+	x = -1;
+	while (++x < g_config.r.x)
+	{
+		y = -1;
+		while (++y < g_config.r.y / 2)
+		{
+			color = en->mlx.texture[13].data[y % en->mlx.texture[13].width
+			* en->mlx.texture[13].width + x % en->mlx.texture[13].width];
+			en->mlx.img.data[y * g_config.r.x + x] = color;
+		}
+	}
+}
 
 int				dark_color(double distance, int color)
 {

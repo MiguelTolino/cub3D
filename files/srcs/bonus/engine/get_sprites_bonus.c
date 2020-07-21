@@ -6,38 +6,32 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/21 13:48:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 23:44:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-#define UDIV 2
-#define VDIV 2
+#define UDIV 0.8
+#define VDIV 0.8
 #define VMOVE 0.0
 #define SPRITE_DISTANCE 2
-#define SIZE 256
+#define SIZE 640
 
 static int			choose_texture(t_engine *en, int i, t_vector_int tex)
 {
 	int color;
 
 	if (en->sprite[i].num == 2)
-	{	color = en->mlx.texture[6].data[en->mlx.texture[6].width *
+	{
+		color = en->mlx.texture[6].data[en->mlx.texture[6].width *
 		tex.y + tex.x];
 		en->sprite[i].tx = 6;
-		if (en->sprite_distance[i] < 1)
-			exit_game(en);
 	}
 	if (en->sprite[i].num == 5)
 	{
 		color = en->mlx.texture[9].data[en->mlx.texture[9].width *
 		tex.y + tex.x];
 		en->sprite[i].tx = 9;
-		if (en->sprite_distance[i] < SPRITE_DISTANCE)
-		{
-			en->pos.x = g_config.pos_x + 0.5;
-			en->pos.y = g_config.pos_y + 0.5;
-		}
 	}
 	return (color);
 }

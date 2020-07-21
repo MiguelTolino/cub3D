@@ -6,11 +6,25 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:11:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:40:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 17:21:22 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "config.h"
+
+static int	check_color_line(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!(ft_strchr("0123456789FC ,", line[i])))
+			throw_error("Wrong colors");
+		i++;
+	}
+	return (0);
+}
 
 char		*rgb2hex(int r, int g, int b)
 {
@@ -51,17 +65,17 @@ t_color		save_color(char *line, char *position)
 
 	i = 0;
 	line = position;
+	check_color_line(line);
 	while (i < 3)
 	{
 		line++;
 		color.rgb[i] = ft_atoi(line);
-		line = ft_strchr(line, ',');
-		if (line != NULL && i == 2)
-			throw_error("Too many colors");
+		if ((line = ft_strchr(line, ',')) == NULL && i != 2 ||
+		(line != NULL && i == 2))
+			throw_error("Wrong colors");
 		i++;
 	}
 	color.rgb_hex = rgb2hex(color.rgb[0], color.rgb[1], color.rgb[2]);
 	color.rgb_int = rgb_int(color.rgb[0], color.rgb[1], color.rgb[2]);
-	g_config.counter++;
 	return (color);
 }

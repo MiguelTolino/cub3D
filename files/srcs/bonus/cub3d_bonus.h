@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 12:26:52 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 14:09:14 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/19 01:25:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct		s_sprite
 	double			x;
 	double			y;
 	int				num;
+	int				tx;
 }					t_sprite;
 
 typedef struct		s_sprite_cast

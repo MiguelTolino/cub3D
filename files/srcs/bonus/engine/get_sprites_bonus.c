@@ -6,15 +6,16 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 18:16:06 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:48:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-#define UDIV 1
-#define VDIV 1
-#define VMOVE 128.0
-#define SPRITE_DISTANCE 3
+#define UDIV 2
+#define VDIV 2
+#define VMOVE 0.0
+#define SPRITE_DISTANCE 2
+#define SIZE 256
 
 static int			choose_texture(t_engine *en, int i, t_vector_int tex)
 {
@@ -23,13 +24,15 @@ static int			choose_texture(t_engine *en, int i, t_vector_int tex)
 	if (en->sprite[i].num == 2)
 	{	color = en->mlx.texture[6].data[en->mlx.texture[6].width *
 		tex.y + tex.x];
-		if (en->sprite_distance[i] < SPRITE_DISTANCE - 2)
+		en->sprite[i].tx = 6;
+		if (en->sprite_distance[i] < 1)
 			exit_game(en);
 	}
 	if (en->sprite[i].num == 5)
 	{
 		color = en->mlx.texture[9].data[en->mlx.texture[9].width *
 		tex.y + tex.x];
+		en->sprite[i].tx = 9;
 		if (en->sprite_distance[i] < SPRITE_DISTANCE)
 		{
 			en->pos.x = g_config.pos_x + 0.5;
@@ -67,7 +70,7 @@ static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 	s->v_move_screen = (int)(VMOVE / s->transform.y);
 	s->sprite_screen_x = (int)((g_config.r.x / 2) * (1 + s->transform.x /
 	s->transform.y));
-	s->sprite_height = abs((int)(g_config.r.y / (s->transform.y))) / VDIV;
+	s->sprite_height = fabs((int)(g_config.r.y / (s->transform.y))) / VDIV;
 	s->draw_start.y = -s->sprite_height / 2 + g_config.r.y / 2
 	+ s->v_move_screen;
 	if (s->draw_start.y < 0)
@@ -75,7 +78,7 @@ static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 	s->draw_end.y = s->sprite_height / 2 + g_config.r.y / 2 + s->v_move_screen;
 	if (s->draw_end.y >= g_config.r.y)
 		s->draw_end.y = g_config.r.y - 1;
-	s->sprite_width = abs((int)(g_config.r.y / (s->transform.y))) / UDIV;
+	s->sprite_width = fabs((int)(g_config.r.y / (s->transform.y))) / UDIV;
 	s->draw_start.x = -s->sprite_width / 2 + s->sprite_screen_x;
 	if (s->draw_start.x < 0)
 		s->draw_start.x = 0;
@@ -92,7 +95,7 @@ int stripe, int i)
 	int				y;
 
 	tex.x = (int)(256 * (stripe - (-s.sprite_width / 2 + s.sprite_screen_x)) *
-	64 / s.sprite_width) / 256;
+	SIZE / s.sprite_width) / 256;
 	if (s.transform.y > 0 && stripe > 0 && stripe < g_config.r.x &&
 	s.transform.y < en->z_buff[stripe])
 	{
@@ -101,9 +104,9 @@ int stripe, int i)
 		{
 			d = (y - s.v_move_screen) * 256 - g_config.r.y * 128 +
 			s.sprite_height * 128;
-			tex.y = ((d * 64) / s.sprite_height) / 256;
+			tex.y = ((d * SIZE) / s.sprite_height) / 256;
 			en->color = choose_texture(en, i, tex);
-			if (en->color != en->mlx.texture[6].data[0])
+			if (en->color != en->mlx.texture[en->sprite[i].tx].data[0])
 				*(en->mlx.img.data + (y * g_config.r.x) + stripe) =
 				dark_color(en->sprite_distance[i], en->color);
 			y++;

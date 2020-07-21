@@ -1,29 +1,32 @@
 R 720 500
-NO ./files/images/textures/tile141.xpm
-SO ./files/images/textures/tile142.xpm
-WE   ./files/images/textures/tile143.xpm
-EA  ./files/images/textures/tile144.xpm
-S1 ./files/images/sprites/slugma.xpm
-S2 ./files/images/textures/tile240.xpm
-FT ./files/images/textures/tile145.xpm
-CT ./files/images/textures/tile146.xpm
-TX1     ./files/images/textures/tile147.xpm
-TX2    ./files/images/textures/tile148.xpm
+
+NO ./files/images/textures/north.xpm
+SO ./files/images/textures/wood2.xpm
+WE   ./files/images/textures/tile118.xpm
+EA  ./files/images/textures/east.xpm
+
+S1 ./files/images/horror/baby.xpm
+S2 ./files/images/horror/dementor.xpm
+
+CT ./files/images/textures/sky_1.xpm
+FT ./files/images/textures/lava.xpm
+
+TX1     ./files/images/textures/eagle.xpm
+TX2    ./files/images/textures/bluestone.xpm
 
 
 1111111111111111111111111111111
-1E00000000000000000000000000011
-1011000001111010000000010000001
+1E00000002000000000050000000011
+1011000001117010000000010000001
 101100000000000000000000100111
 1011000001100000000011000111
-1000000000110000011111110011
-10110111111111011100000010001
+1000000001110000011711110011
+10110111111118011100000010001
 10010111111111011101010010001
-11100000111101011100000000001
+11100000811101011100200000001
 10000000000000001100000010001
 100000000000000011010111100011
 110000111110101011111101110001
 11110111111101011201110110001
 11110000000051111100000000111
 11111111111111111111111111111
-

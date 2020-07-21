@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:11:16 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:40:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:58:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ char		*save_texture(char *line)
 	check_len(num_str, 2);
 	filename = ft_strdup(num_str[1]);
 	free_str(num_str);
-	g_config.counter++;
 	return (filename);
 }

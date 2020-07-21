@@ -6,11 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 13:46:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 13:59:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/19 03:51:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
+#define IMG "./files/images/comun/hand1.xpm"
 
 void			load_textures(t_engine *en, t_img *texture)
 {
@@ -34,6 +35,8 @@ void			load_textures(t_engine *en, t_img *texture)
 	&texture[8].bpp, &texture[8].size_line, &texture[8].endian);
 	texture[9].data = (int*)mlx_get_data_addr(texture[9].ptr,
 	&texture[9].bpp, &texture[9].size_line, &texture[9].endian);
+	texture[10].data = (int*)mlx_get_data_addr(texture[10].ptr,
+	&texture[10].bpp, &texture[10].size_line, &texture[10].endian);
 }
 
 static void		more_textures(t_engine *en, t_img *texture)
@@ -62,13 +65,17 @@ static void		more_textures(t_engine *en, t_img *texture)
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.s2,
 		&texture[9].width, &texture[9].height)))
 		throw_error("Sprite texture can't be opened");
+	if (!(texture[10].ptr =
+		mlx_xpm_file_to_image(en->mlx.ptr, IMG,
+		&texture[10].width, &texture[10].height)))
+		throw_error("Sprite texture can't be opened");
 }
 
 t_img			*init_texture(t_engine *en)
 {
 	t_img		*texture;
 
-	texture = malloc(sizeof(t_img) * 10);
+	texture = malloc(sizeof(t_img) * 11);
 	bzero(texture, sizeof(t_img));
 	if (!(texture[0].ptr =
 		mlx_xpm_file_to_image(en->mlx.ptr, g_config.no,

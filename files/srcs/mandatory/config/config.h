@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 02:23:46 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:33:22 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/18 19:58:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_config
 	int				pos_y;
 	char			dir;
 	int				save;
+	int				*used;
 }					t_config;
 
 t_config			g_config;
@@ -82,5 +83,6 @@ char				*pad_right(char c, int len);
 char				**parse_map();
 int					check_map(char **map, int row, int col);
 char				**copy_matrix(int m, char **array);
+int					is_map(char *line);
 
 #endif

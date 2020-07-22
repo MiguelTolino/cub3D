@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 12:26:52 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:37:40 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:15:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,10 +205,10 @@ t_img				*init_texture(t_engine *en);
 void				rotate_right(t_engine *en);
 void				rotate_left(t_engine *en);
 int					orientation(t_engine *en);
-void				move_foward(t_engine *en);
-void				move_backward(t_engine *en);
-void				move_left(t_engine *en);
-void				move_right(t_engine *en);
+int					move_foward(t_engine *en);
+int					move_backward(t_engine *en);
+int					move_left(t_engine *en);
+int					move_right(t_engine *en);
 void				destroy_create_image(t_engine *en);
 void				draw_skybox(t_engine *en);
 

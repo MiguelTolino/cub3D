@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 11:34:09 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:33:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:26:46 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define DPI 100
 #define BMP_HEADER_SIZE 54
 
-static t_bmp	init_bmp()
+static t_bmp	init_bmp(void)
 {
 	t_bmp	bmp;
 	int		ppm;

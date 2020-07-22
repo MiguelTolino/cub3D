@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*   key_hooks_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 14:02:04 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:26:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:33:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		rotate_left(t_engine *en)
 	cos(en->rot_speed);
 }
 
-int		movement(t_engine *en)
+int			movement(t_engine *en)
 {
 	if (en->k_buff.up)
 		move_foward(en);
@@ -59,7 +59,7 @@ int		movement(t_engine *en)
 	return (0);
 }
 
-int		key_press(int keycode, t_engine *en)
+int			key_press(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 		en->k_buff.up = 1;
@@ -78,7 +78,7 @@ int		key_press(int keycode, t_engine *en)
 	return (0);
 }
 
-int		key_release(int keycode, t_engine *en)
+int			key_release(int keycode, t_engine *en)
 {
 	if (keycode == KEY_W)
 		en->k_buff.up = 0;

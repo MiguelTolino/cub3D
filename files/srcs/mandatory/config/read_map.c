@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:10:59 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 12:00:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:18:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void		read_map(int fd)
 	g_config.map.n_col = 0;
 	g_config.map.n_row = 0;
 	g_config.map.buff = ft_strdup("");
+	aux = NULL;
+	c_len = 0;
 	while ((end = get_next_line(fd, &line)) >= 0)
 	{
 		calculate_map(line, aux, c_len, end);

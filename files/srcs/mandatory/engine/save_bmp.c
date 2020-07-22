@@ -6,11 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:45:37 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 02:39:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:52:40 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include "sys/stat.h"
 #define DPI 100
 #define BMP_HEADER_SIZE 54
 

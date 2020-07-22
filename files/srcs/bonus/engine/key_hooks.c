@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 14:02:04 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 14:04:26 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:26:34 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
 
-int		rotate_right(t_engine *en)
+void		rotate_right(t_engine *en)
 {
 	en->old_dir_x = en->dir.x;
 	en->dir.x = en->dir.x * cos(-en->rot_speed) - en->dir.y *
@@ -26,7 +26,7 @@ int		rotate_right(t_engine *en)
 	cos(-en->rot_speed);
 }
 
-int		rotate_left(t_engine *en)
+void		rotate_left(t_engine *en)
 {
 	en->old_dir_x = en->dir.x;
 	en->dir.x = en->dir.x * cos(en->rot_speed) - en->dir.y *

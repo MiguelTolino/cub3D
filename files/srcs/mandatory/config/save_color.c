@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:11:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/21 17:21:22 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:15:25 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_color		save_color(char *line, char *position)
 	{
 		line++;
 		color.rgb[i] = ft_atoi(line);
-		if ((line = ft_strchr(line, ',')) == NULL && i != 2 ||
+		if ((((line = ft_strchr(line, ',')) == NULL) && (i != 2)) ||
 		(line != NULL && i == 2))
 			throw_error("Wrong colors");
 		i++;

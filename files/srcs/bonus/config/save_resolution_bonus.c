@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/05 16:17:18 by miguel            #+#    #+#             */
-/*   Updated: 2020/07/21 23:43:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:43:01 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 static void		check_resolution(t_resolution *r)
 {
-	if (r->x < MIN_WIDTH || r->y < MIN_HEIGHT ||
-	r->x > MAX_WIDTH || r->y > MAX_HEIGHT)
-		throw_error("Resolution is wrong");
+	if (r->x > MAX_WIDTH || r->y > MAX_HEIGHT)
+	{
+		r->x = MAX_WIDTH;
+		r->y = MAX_HEIGHT;
+	}
+	if (r->x < MIN_WIDTH || r->y < MIN_HEIGHT)
+	{
+		r->x = MIN_WIDTH;
+		r->y = MIN_HEIGHT;
+	}
 }
 
 t_resolution	save_resolution(char *line)

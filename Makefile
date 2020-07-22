@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2020/07/09 23:17:51 by mmateo-t         ###   ########.fr        #
+#    Updated: 2020/07/22 13:13:53 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ NAME:= cub3D
 IMG:= $(NAME).bmp
 CC:= gcc 
 MLXFLAG =   -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx -lm
-#CFLAGS:= -Wall -Werror -Wextra -I.
+CFLAGS:= -Wall -Werror -Wextra -I.
 MLX_DIR:= files/lib/minilibx-linux
 RM :=	rm -rvf
 LIBFT_DIR:= ./files/lib/libft
@@ -47,7 +47,7 @@ GNL:= files/lib/get_next_line/
 all:	libft minilibx $(NAME) msg
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) -g $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
+	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
 
 bonus: libft minilibx $(OBJS_BONUS) 
 	$(CC) $(OBJS_BONUS) $(GNL)*.c -o $(NAME) $(CFLAGS) $(MLXFLAG) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a 
@@ -62,9 +62,6 @@ libft:
 minilibx:
 		make -C $(MLX_DIR)
 
-debug:
-	$(CC) $(OBJS) $(GNL)*.c -o $(NAME) -L$(LIBFT_DIR) $(LIBFT_DIR)/libft.a $(DEBUG_FLAG)
-		@echo "Debugging executable Created"
 clean:
 		@echo "Removing objects"
 		make -C $(LIBFT_DIR) clean
@@ -86,7 +83,6 @@ msg:
 re:
 	make fclean all
 	@echo "All files has been deleted and recompiled"
-
 
 
 .PHONY: clean fclean all re objects debug minilibx libft objects bonus

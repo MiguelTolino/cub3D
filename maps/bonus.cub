@@ -1,4 +1,4 @@
-R 1000 800
+R 1200 800
 
 NO ./files/images/textures/pared_sangre.xpm
 SO ./files/images/textures/pared_grafity.xpm
@@ -6,13 +6,13 @@ WE   ./files/images/textures/pared_musgo.xpm
 EA  ./files/images/textures/pared_musgo2.xpm
 
 S1 ./files/images/horror/dementor.xpm
-S2 ./files/images/monk.xpm
+S2 ./files/images/horror/monk.xpm
 
 CT ./files/images/textures/sky_1.xpm
 FT ./files/images/textures/suelo_piedra.xpm
 
-TX1     ./files/images/juana.xpm
-TX2    ./files/images/jack.xpm
+TX1     ./files/images/horror/juana.xpm
+TX2    ./files/images/horror/jack.xpm
 
 111111111111111111111111111111
 111101000000000000001150011111

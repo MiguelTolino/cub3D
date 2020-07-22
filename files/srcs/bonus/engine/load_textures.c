@@ -6,12 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 13:46:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:22:52 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:21:25 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d_bonus.h"
-#define HAND "./files/images/hand1.xpm"
+#define HAND "./files/images/horror/hand1.xpm"
 #define HEALTH "./files/images/textures/health.xpm"
 #define SKYBOX "./files/images/comun/luna.xpm"
 

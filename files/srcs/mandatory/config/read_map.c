@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:10:59 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:18:41 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:01:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int			is_map(char *line)
 	if (i == ft_strlen(line))
 		return (1);
 	else
-		return (0);
+		throw_error("Map corrupted");
+	return (0);
 }
 
 static void	calculate_map(char *line, char *aux, int c_len, int end)

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 01:11:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/22 13:15:25 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 19:03:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 static int	check_color_line(char *line)
 {
 	int i;
+	int cont;
 
 	i = 0;
+	cont = 0;
 	while (line[i])
 	{
 		if (!(ft_strchr("0123456789FC ,", line[i])))
 			throw_error("Wrong colors");
+		if (ft_strchr(",", line[i]))
+			cont++;
 		i++;
 	}
+	if (cont != 2)
+		throw_error("Number of colors are incorrect");
 	return (0);
 }
 
@@ -70,9 +76,7 @@ t_color		save_color(char *line, char *position)
 	{
 		line++;
 		color.rgb[i] = ft_atoi(line);
-		if ((((line = ft_strchr(line, ',')) == NULL) && (i != 2)) ||
-		(line != NULL && i == 2))
-			throw_error("Wrong colors");
+		line = ft_strchr(line, ',');
 		i++;
 	}
 	color.rgb_hex = rgb2hex(color.rgb[0], color.rgb[1], color.rgb[2]);

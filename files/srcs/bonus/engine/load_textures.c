@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 13:46:29 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/21 23:47:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:22:52 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define HEALTH "./files/images/textures/health.xpm"
 #define SKYBOX "./files/images/comun/luna.xpm"
 
-void			load_textures(t_engine *en, t_img *texture)
+void			load_textures(t_img *texture)
 {
 	texture[0].data = (int*)mlx_get_data_addr(texture[0].ptr,
 	&texture[0].bpp, &texture[0].size_line, &texture[0].endian);
@@ -109,6 +109,6 @@ t_img			*init_texture(t_engine *en)
 		&texture[3].width, &texture[3].height)))
 		throw_error("West texture can't be opened");
 	more_textures1(en, texture);
-	load_textures(en, texture);
+	load_textures(texture);
 	return (texture);
 }

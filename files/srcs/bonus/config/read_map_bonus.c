@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 12:34:47 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/18 13:15:10 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:22:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int			is_map(char *line)
 {
 	unsigned int i;
-	unsigned int position;
 
 	i = 0;
-	position = 0;
 	if (!*line)
 		return (0);
 	while (line[i] == ' ' || line[i] == '1' || line[i] == '2' || line[i] == '0'
@@ -61,6 +59,8 @@ void		read_map(int fd)
 	g_config.map.n_col = 0;
 	g_config.map.n_row = 0;
 	g_config.map.buff = ft_strdup("");
+	c_len = 0;
+	aux = NULL;
 	while ((end = get_next_line(fd, &line)) >= 0)
 	{
 		calculate_map(line, end, aux, c_len);

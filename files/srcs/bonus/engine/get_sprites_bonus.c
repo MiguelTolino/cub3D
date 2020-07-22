@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:30:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2020/07/21 23:44:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:24:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 	s->v_move_screen = (int)(VMOVE / s->transform.y);
 	s->sprite_screen_x = (int)((g_config.r.x / 2) * (1 + s->transform.x /
 	s->transform.y));
-	s->sprite_height = fabs((int)(g_config.r.y / (s->transform.y))) / VDIV;
+	s->sprite_height = abs((int)(g_config.r.y / (s->transform.y))) / VDIV;
 	s->draw_start.y = -s->sprite_height / 2 + g_config.r.y / 2
 	+ s->v_move_screen;
 	if (s->draw_start.y < 0)
@@ -72,7 +72,7 @@ static void			sprites_calculation(t_engine *en, t_sprite_cast *s, int i)
 	s->draw_end.y = s->sprite_height / 2 + g_config.r.y / 2 + s->v_move_screen;
 	if (s->draw_end.y >= g_config.r.y)
 		s->draw_end.y = g_config.r.y - 1;
-	s->sprite_width = fabs((int)(g_config.r.y / (s->transform.y))) / UDIV;
+	s->sprite_width = abs((int)(g_config.r.y / (s->transform.y))) / UDIV;
 	s->draw_start.x = -s->sprite_width / 2 + s->sprite_screen_x;
 	if (s->draw_start.x < 0)
 		s->draw_start.x = 0;
@@ -111,7 +111,6 @@ int stripe, int i)
 int					sprite_casting(t_engine *en)
 {
 	int				i;
-	int				y;
 	int				stripe;
 	t_sprite_cast	s;
 

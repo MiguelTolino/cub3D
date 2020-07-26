@@ -29,3 +29,10 @@ Based on your `make` choice, you should use one map or another.
 
 ![Mandatory](mandatory.png)
 ![Bonus](bonus.png)
+
+### Resources
++ [Permadi Raycasting Tutorial](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
++ [Minilibx Info](https://qst0.github.io/ft_libgfx/)
++ [Lodev Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html)
++ [Creating BMP Images](http://ricardolovelace.com/creating-bitmap-images-with-c-on-windows.html)
+

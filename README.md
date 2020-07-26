@@ -3,8 +3,8 @@ This project is inspired by the world-famous eponymous 90’s game, which was th
 find your game inside a maze.
 
 ## Pre-requisites
--[x]Linux OS
--[x]GCC Compiler
+-[x] Linux OS
+-[x] GCC Compiler
 
 ##Installation
 1. `git clone https://www.github.com/MikelTolino/Cub3D.git`

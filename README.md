@@ -20,8 +20,12 @@ If you want to know more :arrow_right: [Wolfenstein 3D](https://es.wikipedia.org
 2. `make` or `make bonus`
 3. `./cub3D maps/mandatory.cub` or `./cub3D maps/bonus.cub`
 
+Based on your `make` choice, you should use one map or another.
+
 ## Controllers
 
-- :w: :s: :a: :d: to move throw the map
+- WASD to move through the map
 - KEY_LEFT & KEY RIGHT to rotate the camera
 
+![Mandatory](mandatory.png)
+![Bonus](bonus.png)

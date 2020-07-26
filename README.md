@@ -9,11 +9,11 @@ Shooter” in the history of video games.
 Wolfenstein 3D is the ancestor of games like Doom (Id Software, 1993), Doom II
 (Id Software, 1994), Duke Nukem 3D (3D Realm, 1996) and Quake (Id Software, 1996),
 that are additional eternal milestones in the world of video games.
-If you want to know more :key: [Wolfenstein 3D]https://es.wikipedia.org/wiki/Wolfenstein_3D
+If you want to know more :arrow_right: [Wolfenstein 3D](https://es.wikipedia.org/wiki/Wolfenstein_3D)
 
 ## Pre-requisites
--[x] Linux OS
--[x] GCC Compiler
+- [x] Linux OS
+- [x] GCC Compiler
 
 ## Installation
 1. `git clone https://www.github.com/MikelTolino/Cub3D.git`

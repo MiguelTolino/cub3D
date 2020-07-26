@@ -22,6 +22,6 @@ If you want to know more :arrow_right: [Wolfenstein 3D](https://es.wikipedia.org
 
 ## Controllers
 
-- WSAD to move around the map
+- :w: :s: :a: :d: to move throw the map
 - KEY_LEFT & KEY RIGHT to rotate the camera
 

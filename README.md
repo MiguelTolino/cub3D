@@ -27,8 +27,9 @@ Based on your `make` choice, you should use one map or another.
 - WASD to move through the map
 - KEY_LEFT & KEY RIGHT to rotate the camera
 
-![Mandatory](mandatory.png)
-![Bonus](bonus.png)
+## Screenshots
+![Mandatory](screenshots/mandatory.png)
+![Bonus](screenshots/bonus1.png)
 
 ### Resources
 + [Permadi Raycasting Tutorial](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)

@@ -28,7 +28,10 @@ Based on your `make` choice, you should use one map or another.
 - KEY_LEFT & KEY RIGHT to rotate the camera
 
 ## Screenshots
+### Mandatory
 ![Mandatory](screenshots/mandatory.png)
+___
+### Bonus
 ![Bonus](screenshots/bonus1.png)
 
 ### Resources

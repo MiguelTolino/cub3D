@@ -18,14 +18,14 @@ If you want to know more :arrow_right: [Wolfenstein 3D](https://es.wikipedia.org
 ## Installation :rocket:
 1. `git clone https://www.github.com/MikelTolino/Cub3D.git`
 2. `make` or `make bonus`
-3. `./cub3D maps/mandatory.cub` or `./cub3D maps/bonus.cub`
+3. `./cub3D maps/mandatory.cub` or  `./cub3D maps/bonus.cub`
 
 Based on your `make` choice, you should use one map or another.
 
 ## Controllers :bomb:
 
-- WASD to move through the map
-- KEY_LEFT & KEY RIGHT to rotate the camera
+- W A S D :arrow_forward: to move through the map
+- :arrow_left: :o: :arrow_right: to rotate the camera
 
 ## Screenshots :mag:
 ### Mandatory :boom:
@@ -37,6 +37,6 @@ ___
 ### Resources :book:
 + [Permadi Raycasting Tutorial](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
 + [Minilibx Info](https://qst0.github.io/ft_libgfx/)
-+ [Lodev Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html)
++ [Lodev Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html) :star:
 + [Creating BMP Images](http://ricardolovelace.com/creating-bitmap-images-with-c-on-windows.html)
 
